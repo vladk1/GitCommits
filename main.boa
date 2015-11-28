@@ -1,0 +1,35 @@
+# Getting most popular commits after version bump
+p: Project = input;
+counts: output top(10) of string weight int;
+fixs: output top(10) of string weight int;
+fixsCount := 0;
+MAX_LOOK_AHEAD_COMMITS := 2;
+isbumpversion := false;
+
+IsBumpVersion := function(commit_log: string): bool {
+#    "bump.*version"
+  return (match("bump", commit_log) && match("version", commit_log));
+};
+
+CheckNextCommitsAfterBump := function(commit_log: string): bool {
+	if (!IsBumpVersion(commit_log) && fixsCount<MAX_LOOK_AHEAD_COMMITS) {
+		fixs << (commit_log) weight 1;
+		fixsCount++;
+	} else {
+		fixsCount=0;
+		return false;
+	}
+	return true;
+};
+
+visit(p, visitor {
+    before node: Revision -> {
+       if (isbumpversion) {
+           isbumpversion = CheckNextCommitsAfterBump(node.log);
+       }
+	   if (IsBumpVersion(node.log)) {
+	        counts << (node.log) weight 1;
+	   	    isbumpversion = true;
+	   }
+    }
+});
