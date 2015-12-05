@@ -1,19 +1,39 @@
 # Getting most popular commits after version bump
 p: Project = input;
-counts: output top(10) of string weight int;
-fixs: output top(10) of string weight int;
+countsBump: output top(10) of string weight int;
+countFixs: output top(10) of string weight int;
+foundFixCommits: output top(20) of string weight int;
+
 fixsCount := 0;
+
 MAX_LOOK_AHEAD_COMMITS := 2;
 isbumpversion := false;
+bump_date := now ();
+
+filterTopics: set of string;
+add(filterTopics, "software development");
+add(filterTopics, "frameworks");
+
+programmingLanguages: map[int] of string;
 
 IsBumpVersion := function(commit_log: string): bool {
 #    "bump.*version"
-  return (match("bump", commit_log) && match("version", commit_log));
+    return (match("bump", commit_log) && match("version", commit_log));
 };
 
-CheckNextCommitsAfterBump := function(commit_log: string): bool {
-	if (!IsBumpVersion(commit_log) && fixsCount<MAX_LOOK_AHEAD_COMMITS) {
-		fixs << (commit_log) weight 1;
+IsFixWithinGoodTime := function(commit_time: time, bump_time: time): bool {
+#  roughly a week
+    return (dayofyear(commit_time) - dayofyear(bump_time) < 7);
+};
+
+CheckNextCommitsAfterBump := function(commit_log: string, commit_date: time, bump_date: time): bool {
+	if (!IsBumpVersion(commit_log) && isfixingrevision(commit_log) 
+	        && fixsCount<MAX_LOOK_AHEAD_COMMITS && IsFixWithinGoodTime(commit_date, bump_date)) {
+#	    Hence is fix commit
+#		countFixs << (commit_log) weight 1;
+        foreach (j: int; def(programmingLanguages[j])) {
+            foundFixCommits << programmingLanguages[j] weight 1;
+        }
 		fixsCount++;
 	} else {
 		fixsCount=0;
@@ -23,13 +43,25 @@ CheckNextCommitsAfterBump := function(commit_log: string): bool {
 };
 
 visit(p, visitor {
+    before node: Project -> {
+        clear(programmingLanguages);
+        ifall (i: int; contains(filterTopics, node.topics[i])) {
+            stop;   
+        }
+        foreach (j: int; def(node.programming_languages[j])) {
+            programmingLanguages[j] = node.programming_languages[j];
+        }
+    }
     before node: Revision -> {
        if (isbumpversion) {
-           isbumpversion = CheckNextCommitsAfterBump(node.log);
+           isbumpversion = CheckNextCommitsAfterBump(node.log, node.commit_date, bump_date);
        }
 	   if (IsBumpVersion(node.log)) {
-	        counts << (node.log) weight 1;
+	        foreach (j: int; def(programmingLanguages[j])) {
+	            countsBump << programmingLanguages[j] weight 1;
+	        }
 	   	    isbumpversion = true;
+	   	    bump_date = node.commit_date;
 	   }
     }
 });
