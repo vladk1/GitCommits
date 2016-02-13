@@ -30,7 +30,6 @@ CheckNextCommitsAfterBump := function(commit_log: string, commit_date: time, bum
 	if (!IsBumpVersion(commit_log) && isfixingrevision(commit_log) 
 	        && fixsCount<MAX_LOOK_AHEAD_COMMITS && IsFixWithinGoodTime(commit_date, bump_date)) {
 #	    Hence is fix commit
-#		countFixs << (commit_log) weight 1;
         foreach (j: int; def(programmingLanguages[j])) {
             foundFixCommits << programmingLanguages[j] weight 1;
         }
@@ -45,12 +44,12 @@ CheckNextCommitsAfterBump := function(commit_log: string, commit_date: time, bum
 visit(p, visitor {
     before node: Project -> {
         clear(programmingLanguages);
-        ifall (i: int; contains(filterTopics, node.topics[i])) {
-            stop;   
+        exists (i: int; contains(filterTopics, node.topics[i])) {
+            foreach (j: int; def(node.programming_languages[j])) {
+                programmingLanguages[j] = node.programming_languages[j];
+            }
         }
-        foreach (j: int; def(node.programming_languages[j])) {
-            programmingLanguages[j] = node.programming_languages[j];
-        }
+        
     }
     before node: Revision -> {
        if (isbumpversion) {
