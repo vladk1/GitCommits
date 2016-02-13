@@ -1,0 +1,17 @@
+countsBump[] = c++, 170
+countsBump[] = python, 101
+countsBump[] = c, 61
+countsBump[] = java, 43
+countsBump[] = c#, 7
+countsBump[] = javascript, 6
+countsBump[] = objective c, 4
+countsBump[] = lua, 3
+countsBump[] = xsl (xslt/xpath/xsl-fo), 2
+countsBump[] = assembly, 1
+foundFixCommits[] = c++, 59
+foundFixCommits[] = python, 42
+foundFixCommits[] = c, 24
+foundFixCommits[] = java, 3
+foundFixCommits[] = c#, 1
+foundFixCommits[] = javascript, 1
+foundFixCommits[] = objective c, 1

@@ -1,0 +1,15 @@
+countsBump[] = php, 38
+countsBump[] = java, 32
+countsBump[] = c#, 23
+countsBump[] = c, 21
+countsBump[] = groovy, 13
+countsBump[] = javascript, 12
+countsBump[] = perl, 9
+countsBump[] = unix shell, 2
+countsBump[] = python, 1
+foundFixCommits[] = c, 9
+foundFixCommits[] = java, 9
+foundFixCommits[] = php, 9
+foundFixCommits[] = c#, 7
+foundFixCommits[] = groovy, 2
+foundFixCommits[] = javascript, 2

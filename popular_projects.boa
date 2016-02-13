@@ -1,0 +1,30 @@
+# Counting the 20 most used topics (output both lowcase/uppercase names as separate topics)
+#counts = Dynamic Content, 9371 *
+#counts = Software Development, 9196
+#counts = Frameworks, 7567
+#counts = Games/Entertainment, 6131
+#counts = Site Management, 5890
+#counts = Other/Nonlisted Topic, 5810
+#counts = Internet, 5241
+#counts = Role-Playing, 4670
+#counts = Systems Administration, 4529
+#counts = Education, 4521
+#counts = Front-Ends, 4405
+#counts = Communications, 4319
+#counts = WWW/HTTP, 4088
+#counts = Database, 4020
+#counts = Security, 3712
+#counts = Testing, 3647
+#counts = Code Generators, 3493
+#counts = Mathematics, 3302
+#counts = Build Tools, 3153
+#counts = Networking, 3134
+p: Project = input;
+counts: output top(40) of string weight int;
+visit(p, visitor {
+    before node: Project -> {
+        foreach (i: int; def(node.topics[i])) {
+	        counts << node.topics[i] weight 1;
+        }
+    }
+});

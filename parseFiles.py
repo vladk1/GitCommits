@@ -2,6 +2,11 @@ import fileinput
 import sys
 import operator
 
+# Usage:
+# python parseFiles.py {boa_data_path} {output_data_path}
+# output e.g.: perl 0.219178082192  hf=32 bc=146
+# hf is total hotfix number, bc is bump commits total number
+
 bumpCounts= {}
 hotfixCounts = {}
 finalPercentage = {}

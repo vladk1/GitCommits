@@ -1,0 +1,9 @@
+c++ 0.0625  hf=1 bc=16
+pl/sql 0.0714285714286  hf=1 bc=14
+scala 0.0816326530612  hf=24 bc=294
+java 0.0833333333333  hf=27 bc=324
+php 0.28  hf=7 bc=25
+c 0.333333333333  hf=7 bc=21
+emacs-lisp 0.4375  hf=7 bc=16
+unix shell 0.4375  hf=7 bc=16
+perl 0.4375  hf=7 bc=16

@@ -1,0 +1,13 @@
+countsBump[] = java, 47
+countsBump[] = javascript, 17
+countsBump[] = php, 16
+countsBump[] = c, 15
+countsBump[] = c++, 15
+countsBump[] = perl, 12
+countsBump[] = pl/sql, 8
+countsBump[] = haskell, 4
+countsBump[] = unix shell, 4
+countsBump[] = c#, 1
+foundFixCommits[] = java, 11
+foundFixCommits[] = c, 4
+foundFixCommits[] = c++, 4
