@@ -11,27 +11,27 @@ isbumpversion := false;
 bump_date := now ();
 
 filterTopics: set of string;
-
+# Add topics that you are interested to scan for hotfixes scan:
 add(filterTopics, "Dynamic Content");
-add(filterTopics, "Software Development");
-add(filterTopics, "Frameworks");
-add(filterTopics, "Games/Entertainment");
-add(filterTopics, "Site Management");
-add(filterTopics, "Other/Nonlisted Topic");
-add(filterTopics, "Internet");
-add(filterTopics, "Role-Playing");
-add(filterTopics, "Systems Administration");
-add(filterTopics, "Education");
-add(filterTopics, "Front-Ends");
-add(filterTopics, "Communications");
-add(filterTopics, "WWW/HTTP");
-add(filterTopics, "Database");
-add(filterTopics, "Security");
-add(filterTopics, "Testing");
-add(filterTopics, "Code Generators");
-add(filterTopics, "Mathematics");
-add(filterTopics, "Build Tools");
-add(filterTopics, "Networking");
+#add(filterTopics, "Software Development");
+#add(filterTopics, "Frameworks");
+#add(filterTopics, "Games/Entertainment");
+#add(filterTopics, "Site Management");
+#add(filterTopics, "Other/Nonlisted Topic");
+#add(filterTopics, "Internet");
+#add(filterTopics, "Role-Playing");
+#add(filterTopics, "Systems Administration");
+#add(filterTopics, "Education");
+#add(filterTopics, "Front-Ends");
+#add(filterTopics, "Communications");
+#add(filterTopics, "WWW/HTTP");
+#add(filterTopics, "Database");
+#add(filterTopics, "Security");
+#add(filterTopics, "Testing");
+#add(filterTopics, "Code Generators");
+#add(filterTopics, "Mathematics");
+#add(filterTopics, "Build Tools");
+#add(filterTopics, "Networking");
 
 programmingLanguages: map[int] of string;
 
