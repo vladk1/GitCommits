@@ -1,0 +1,11 @@
+python 104.811881188  bf=10586 bc=101
+objective c 147.0  bf=588 bc=4
+c++ 228.294117647  bf=38810 bc=170
+c 262.278688525  bf=15999 bc=61
+xsl (xslt/xpath/xsl-fo) 332.0  bf=664 bc=2
+java 667.093023256  bf=28685 bc=43
+javascript 679.333333333  bf=4076 bc=6
+lua 1031.0  bf=3093 bc=3
+c# 1116.71428571  bf=7817 bc=7
+assembly 1538.0  bf=1538 bc=1
+visual basic .net 3755.0  bf=3755 bc=1

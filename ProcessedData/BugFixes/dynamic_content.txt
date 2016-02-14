@@ -1,0 +1,15 @@
+scheme 44.0  bf=220 bc=5
+c++ 88.1774193548  bf=10934 bc=124
+perl 95.9863013699  bf=14014 bc=146
+c 117.470588235  bf=1997 bc=17
+php 185.266304348  bf=34089 bc=184
+javascript 234.392592593  bf=31643 bc=135
+java 244.605263158  bf=55770 bc=228
+python 279.181818182  bf=3071 bc=11
+tcl 361.0  bf=722 bc=2
+zope 440.5  bf=881 bc=2
+pl/sql 474.0  bf=1896 bc=4
+asp.net 559.0  bf=559 bc=1
+xsl (xslt/xpath/xsl-fo) 1078.33333333  bf=6470 bc=6
+c# 1110.5  bf=2221 bc=2
+jsp 2876.0  bf=8628 bc=3

@@ -1,0 +1,9 @@
+groovy 27.7692307692  bf=361 bc=13
+c 157.19047619  bf=3301 bc=21
+c# 255.260869565  bf=5871 bc=23
+perl 279.333333333  bf=2514 bc=9
+unix shell 410.5  bf=821 bc=2
+java 501.9375  bf=16062 bc=32
+php 685.684210526  bf=26056 bc=38
+javascript 1286.5  bf=15438 bc=12
+python 1482.0  bf=1482 bc=1

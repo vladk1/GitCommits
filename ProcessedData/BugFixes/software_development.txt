@@ -1,0 +1,13 @@
+perl 66.0952380952  bf=1388 bc=21
+php 131.5  bf=2104 bc=16
+python 159.73015873  bf=10063 bc=63
+java 220.394736842  bf=83750 bc=380
+c 265.168421053  bf=25191 bc=95
+xsl (xslt/xpath/xsl-fo) 354.0  bf=1416 bc=4
+objective c 369.80952381  bf=7766 bc=21
+c++ 428.702380952  bf=36011 bc=84
+ruby 430.333333333  bf=2582 bc=6
+scheme 502.333333333  bf=1507 bc=3
+c# 596.36  bf=14909 bc=25
+javascript 690.333333333  bf=4142 bc=6
+assembly 2363.0  bf=2363 bc=1

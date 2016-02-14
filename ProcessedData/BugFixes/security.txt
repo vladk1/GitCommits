@@ -1,0 +1,12 @@
+javascript 105.846153846  bf=2752 bc=26
+php 122.576923077  bf=3187 bc=26
+ruby 188.5  bf=377 bc=2
+c++ 210.423076923  bf=5471 bc=26
+c 264.825  bf=10593 bc=40
+tcl 322.25  bf=1289 bc=4
+python 339.75  bf=5436 bc=16
+c# 353.466666667  bf=5302 bc=15
+unix shell 355.263157895  bf=6750 bc=19
+java 360.962962963  bf=19492 bc=54
+perl 389.8  bf=13643 bc=35
+xsl (xslt/xpath/xsl-fo) 776.5  bf=1553 bc=2

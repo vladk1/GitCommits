@@ -1,0 +1,11 @@
+scala 4.89795918367  bf=1440 bc=294
+emacs-lisp 11.75  bf=188 bc=16
+unix shell 17.125  bf=274 bc=16
+java 89.7469135802  bf=29078 bc=324
+perl 142.75  bf=2284 bc=16
+pl/sql 276.857142857  bf=3876 bc=14
+php 375.6  bf=9390 bc=25
+c 442.142857143  bf=9285 bc=21
+c++ 869.5625  bf=13913 bc=16
+javascript 2159.0  bf=8636 bc=4
+c# 3660.0  bf=3660 bc=1

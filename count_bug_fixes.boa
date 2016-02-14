@@ -1,0 +1,59 @@
+# Getting most popular commits after version bump
+p: Project = input;
+countsBump: output top(20) of string weight int;
+foundFixCommits: output top(20) of string weight int;
+
+filterTopics: set of string;
+# Add topics that you are interested to scan for hotfixes scan:
+#add(filterTopics, "Dynamic Content");
+#add(filterTopics, "Software Development");
+#add(filterTopics, "Frameworks");
+#add(filterTopics, "Games/Entertainment");
+add(filterTopics, "Site Management");
+#add(filterTopics, "Other/Nonlisted Topic");
+#add(filterTopics, "Internet");
+#add(filterTopics, "Role-Playing");
+#add(filterTopics, "Systems Administration");
+#add(filterTopics, "Education");
+#add(filterTopics, "Front-Ends");
+#add(filterTopics, "Communications");
+#add(filterTopics, "WWW/HTTP");
+#add(filterTopics, "Database");
+#add(filterTopics, "Security");
+#add(filterTopics, "Testing");
+#add(filterTopics, "Code Generators");
+#add(filterTopics, "Mathematics");
+#add(filterTopics, "Build Tools");
+#add(filterTopics, "Networking");
+
+programmingLanguages: map[int] of string;
+
+IsBumpVersion := function(commit_log: string): bool {
+#    "bump.*version"
+    return (match("bump", commit_log) && match("version", commit_log));
+};
+
+visit(p, visitor {
+    before node: Project -> {
+        clear(programmingLanguages);
+        exists (i: int; contains(filterTopics, node.topics[i])) {
+            foreach (j: int; def(node.programming_languages[j])) {
+                programmingLanguages[j] = node.programming_languages[j];
+            }
+        }
+        
+    }
+    before node: Revision -> {
+	   if(IsBumpVersion(node.log)) {
+	       foreach (j: int; def(programmingLanguages[j])) {
+	            countsBump << programmingLanguages[j] weight 1;
+	       }
+	   }
+	   
+	   if(isfixingrevision(node.log)) {
+	       foreach (j: int; def(programmingLanguages[j])) {
+                foundFixCommits << programmingLanguages[j] weight 1;
+	       }
+	   }
+    }
+});
