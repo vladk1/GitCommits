@@ -1,10 +1,21 @@
+pl/sql 0.04  hf=1 bc=25
 scala 0.0816326530612  hf=24 bc=294
+visual basic .net 0.0833333333333  hf=3 bc=36
+free pascal 0.125  hf=1 bc=8
 unix shell 0.133223684211  hf=81 bc=608
+groovy 0.153846153846  hf=4 bc=26
 objective c 0.165714285714  hf=29 bc=175
+actionscript 0.166666666667  hf=2 bc=12
+scheme 0.176470588235  hf=9 bc=51
 perl 0.179749715586  hf=158 bc=879
 java 0.181369524985  hf=588 bc=3242
 xsl (xslt/xpath/xsl-fo) 0.183908045977  hf=16 bc=87
+flex 0.1875  hf=3 bc=16
+forth 0.2  hf=2 bc=10
+xbase/clipper 0.222222222222  hf=2 bc=9
+emacs-lisp 0.222222222222  hf=8 bc=36
 javascript 0.233062330623  hf=86 bc=369
+ruby 0.240740740741  hf=13 bc=54
 tcl 0.262295081967  hf=32 bc=122
 c 0.265114196149  hf=592 bc=2233
 python 0.287430683919  hf=311 bc=1082
@@ -15,5 +26,11 @@ fortran 0.303797468354  hf=48 bc=158
 zope 0.323943661972  hf=23 bc=71
 assembly 0.327868852459  hf=40 bc=122
 jsp 0.333333333333  hf=34 bc=102
+object pascal 0.380952380952  hf=8 bc=21
+delphi/kylix 0.388888888889  hf=7 bc=18
 lua 0.397260273973  hf=29 bc=73
 matlab 0.448275862069  hf=26 bc=58
+lisp 0.481481481481  hf=13 bc=27
+pascal 0.583333333333  hf=7 bc=12
+glsl (opengl shading language) 0.666666666667  hf=4 bc=6
+boo 1.0  hf=5 bc=5
