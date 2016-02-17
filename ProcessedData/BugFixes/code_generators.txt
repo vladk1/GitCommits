@@ -1,0 +1,12 @@
+php 18.1363636364  bf=399 bc=22
+java 24.9361702128  bf=3516 bc=141
+unix shell 49.0  bf=49 bc=1
+javascript 93.6666666667  bf=281 bc=3
+c 114.858974359  bf=8959 bc=78
+c++ 116.794871795  bf=9110 bc=78
+fortran 167.5  bf=335 bc=2
+pascal 194.0  bf=194 bc=1
+ada 194.0  bf=194 bc=1
+python 253.2  bf=1266 bc=5
+ocaml (objective caml) 620.0  bf=620 bc=1
+object pascal 787.0  bf=1574 bc=2

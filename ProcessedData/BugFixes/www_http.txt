@@ -1,0 +1,10 @@
+c# 19.25  bf=77 bc=4
+boo 19.25  bf=77 bc=4
+javascript 20.0  bf=40 bc=2
+c 40.5  bf=810 bc=20
+java 51.4647887324  bf=3654 bc=71
+c++ 52.5  bf=210 bc=4
+python 59.5  bf=595 bc=10
+objective c 65.0  bf=650 bc=10
+groovy 138.166666667  bf=829 bc=6
+php 526.454545455  bf=5791 bc=11

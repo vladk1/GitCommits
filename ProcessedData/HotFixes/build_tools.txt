@@ -1,0 +1,13 @@
+c# 0.0714285714286  hf=1 bc=14
+java 0.0967741935484  hf=6 bc=62
+unix shell 0.166666666667  hf=1 bc=6
+fortran 0.222222222222  hf=2 bc=9
+c 0.328125  hf=21 bc=64
+python 0.333333333333  hf=4 bc=12
+c++ 0.35  hf=14 bc=40
+xsl (xslt/xpath/xsl-fo) 0.5  hf=1 bc=2
+assembly 0.625  hf=10 bc=16
+object pascal 1.0  hf=6 bc=6
+pascal 1.2  hf=6 bc=5
+delphi/kylix 1.5  hf=6 bc=4
+modula 1.5  hf=6 bc=4

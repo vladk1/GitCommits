@@ -1,0 +1,8 @@
+perl 0.0526315789474  hf=1 bc=19
+c++ 0.121212121212  hf=4 bc=33
+java 0.15  hf=6 bc=40
+unix shell 0.166666666667  hf=1 bc=6
+c# 0.2  hf=2 bc=10
+php 0.225  hf=9 bc=40
+c 0.2375  hf=19 bc=80
+python 0.238095238095  hf=5 bc=21

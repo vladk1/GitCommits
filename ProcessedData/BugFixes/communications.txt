@@ -1,0 +1,13 @@
+ruby 16.0  bf=16 bc=1
+c 22.4090909091  bf=986 bc=44
+java 27.0222222222  bf=1216 bc=45
+c++ 35.4054054054  bf=1310 bc=37
+python 53.2790697674  bf=2291 bc=43
+objective c 62.25  bf=249 bc=4
+assembly 81.0  bf=81 bc=1
+perl 94.0833333333  bf=1129 bc=12
+c# 165.142857143  bf=1156 bc=7
+javascript 220.4  bf=1102 bc=5
+unix shell 271.5  bf=1086 bc=4
+tcl 271.5  bf=1086 bc=4
+php 271.5  bf=1086 bc=4
