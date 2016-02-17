@@ -394,44 +394,48 @@ Finally, we believe that our paper provides a good foundation for future researc
 % <OR> manually copy in the resultant .bbl file
 % set second argument of \begin to the number of references
 % (used to reserve space for the reference number labels box)
-\begin{thebibliography}{1}
-\bibitem{}
-Hattori, L.P.; Lanza, M., \emph{"On the nature of commits"} in Automated Software Engineering - Workshops, 2008. ASE Workshops 2008. 23rd IEEE/ACM International Conference on , vol., no., pp.63-71, 15-16 Sept. 2008
-\bibitem{}
-Livshits,B.; Zimmerman,T.; \emph{"DynaMine: Finding Common Error Patterns by Mining Software Revision Histories"} in Proceedings of the 10th European software engineering conference held jointly with 13th ACM SIGSOFT international symposium on Foundations of software engineering, pp.296-305
-\bibitem{}
-Mockus, A.; Votta, L.G., \emph{"Identifying reasons for software changes using historic databases"} in Software Maintenance, 2000. Proceedings. International Conference on , vol., no., pp.120-130, 2000
-\bibitem{}
-Ratzinger,J.; Sigmund,T.; Gall,H.; \emph{"On the Relation of Refactoring and Software Defects"} in MSR '08, Proceedings of the 2008 international working conference on Mining software repositories, pp. 35-38
-\bibitem{}
-Hindle,A.; German,D.; Holt,R.; \emph{"What do large commits tell us?: a taxonomical study of large commits"} in MSR '08, Proceedings of the 2008 international working conference on Mining software repositories, pp.99-108
-\bibitem{}
-Oliva,G.; Steinmacher,I.; Wiese,I.; Aurelio,M.; \emph{"What Can Commit Metadata Tell Us About Design Degradation?"} in IWPSE 2013, Proceedings of the 2013 International Workshop on Principles of Software Evolution, pp.18-27
-\bibitem{}
-Phillips,S.; Sillito,J.; Walker,R.; \emph{"Branching and merging: an investigation into current version control practices"} in CHASE '11 Proceedings of the 4th International Workshop on Cooperative and Human Aspects of Software Engineering, pp.9-15
-\bibitem{}
-Agrawal, K.; Amreen, S.; Mockus, A., \emph{"Commit Quality in Five High Performance Computing Projects"} in Software Engineering for High Performance Computing in Science (SE4HPCS), 2015 IEEE/ACM 1st International Workshop on , vol., no., pp.24-29, 18-18 May 2015
-\bibitem{}
-Steff, M.; Russo, B., \emph{"Co-evolution of logical couplings and commits for defect estimation"} in Mining Software Repositories (MSR), 2012 9th IEEE Working Conference on , vol., no., pp.213-216, 2-3 June 2012
-\bibitem{}
-Williams,C.; Spacco,J.; \emph{"Branching and Merging in the Repository"} in MSR '08, Proceedings of the 2008 international working conference on Mining software repositories, pp.19-22
-\bibitem{}
-Kolassa,C.; Riehle,D.; Salim,M.; \emph{"The Empirical Commit Frequency Distribution of Open Source Projects"} in WikiSym '13, Proceedings of the 9th International Symposium on Open Collaboration, Article No.18
-\bibitem{}
-Ray,B.; Posnett,D.; Filkov,V.; Devanbu,P;  \emph{A Large Scale Study of Programming Languages and Code Quality"} in Github;  FSE 2014, Proceedings of the 22nd ACM SIGSOFT International Symposium on Foundations of Software Engineering, pp.155-165
-\bibitem{}
-Phipps,G; \emph{"Comparing Observed Bug and Productivity Rates for Java and C++" } in Software—Practice \& Experience; vol.29, issue 4, pp.345-358, April 10, 1999 
-\bibitem{}
-Prechelt, L., \emph{"An empirical comparison of seven programming languages"} in Computer , vol.33, no.10, pp.23-29, Oct 2000
-\bibitem{}
-Fourment,M.; Gillings,M.; \emph{"A comparison of common programming languages used in bioinformatics"} in BMC Bioinformatics Feb 2008
-\bibitem{}
-Furia,C.; Nanz,S.; \emph{"A Comparative Study of Programming Languages in Rosetta Code"} in ICSE '15, Proceedings of the 37th International Conference on Software Engineering, vol.1, pp.778-788
-\bibitem{}
-Iowa State University of Science and Technology,  \emph{"Boa - Mining Ultra-Large-Scale Software Repositories"}, http://boa.cs.iastate.edu/
+%\begin{thebibliography}{1}
+
+\bibliographystyle{abbrv}
+\bibliography{hotfixes} 
+
+%\bibitem{}
+%Hattori, L.P.; Lanza, M., \emph{"On the nature of commits"} in Automated Software Engineering - Workshops, 2008. ASE Workshops 2008. 23rd IEEE/ACM International Conference on , vol., no., pp.63-71, 15-16 Sept. 2008
+%\bibitem{}
+%Livshits,B.; Zimmerman,T.; \emph{"DynaMine: Finding Common Error Patterns by Mining Software Revision Histories"} in Proceedings of the 10th European software engineering conference held jointly with 13th ACM SIGSOFT international symposium on Foundations of software engineering, pp.296-305
+%\bibitem{}
+%Mockus, A.; Votta, L.G., \emph{"Identifying reasons for software changes using historic databases"} in Software Maintenance, 2000. Proceedings. International Conference on , vol., no., pp.120-130, 2000
+%\bibitem{}
+%Ratzinger,J.; Sigmund,T.; Gall,H.; \emph{"On the Relation of Refactoring and Software Defects"} in MSR '08, Proceedings of the 2008 international working conference on Mining software repositories, pp. 35-38
+%\bibitem{}
+%Hindle,A.; German,D.; Holt,R.; \emph{"What do large commits tell us?: a taxonomical study of large commits"} in MSR '08, Proceedings of the 2008 international working conference on Mining software repositories, pp.99-108
+%\bibitem{}
+%Oliva,G.; Steinmacher,I.; Wiese,I.; Aurelio,M.; \emph{"What Can Commit Metadata Tell Us About Design Degradation?"} in IWPSE 2013, Proceedings of the 2013 International Workshop on Principles of Software Evolution, pp.18-27
+%\bibitem{}
+%Phillips,S.; Sillito,J.; Walker,R.; \emph{"Branching and merging: an investigation into current version control practices"} in CHASE '11 Proceedings of the 4th International Workshop on Cooperative and Human Aspects of Software Engineering, pp.9-15
+%\bibitem{}
+%Agrawal, K.; Amreen, S.; Mockus, A., \emph{"Commit Quality in Five High Performance Computing Projects"} in Software Engineering for High Performance Computing in Science (SE4HPCS), 2015 IEEE/ACM 1st International Workshop on , vol., no., pp.24-29, 18-18 May 2015
+%\bibitem{}
+%Steff, M.; Russo, B., \emph{"Co-evolution of logical couplings and commits for defect estimation"} in Mining Software Repositories (MSR), 2012 9th IEEE Working Conference on , vol., no., pp.213-216, 2-3 June 2012
+%\bibitem{}
+%Williams,C.; Spacco,J.; \emph{"Branching and Merging in the Repository"} in MSR '08, Proceedings of the 2008 international working conference on Mining software repositories, pp.19-22
+%\bibitem{}
+%Kolassa,C.; Riehle,D.; Salim,M.; \emph{"The Empirical Commit Frequency Distribution of Open Source Projects"} in WikiSym '13, Proceedings of the 9th International Symposium on Open Collaboration, Article No.18
+%\bibitem{}
+%Ray,B.; Posnett,D.; Filkov,V.; Devanbu,P;  \emph{A Large Scale Study of Programming Languages and Code Quality"} in Github;  FSE 2014, Proceedings of the 22nd ACM SIGSOFT International Symposium on Foundations of Software Engineering, pp.155-165
+%\bibitem{}
+%Phipps,G; \emph{"Comparing Observed Bug and Productivity Rates for Java and C++" } in Software—Practice \& Experience; vol.29, issue 4, pp.345-358, April 10, 1999 
+%\bibitem{}
+%Prechelt, L., \emph{"An empirical comparison of seven programming languages"} in Computer , vol.33, no.10, pp.23-29, Oct 2000
+%\bibitem{}
+%Fourment,M.; Gillings,M.; \emph{"A comparison of common programming languages used in bioinformatics"} in BMC Bioinformatics Feb 2008
+%\bibitem{}
+%Furia,C.; Nanz,S.; \emph{"A Comparative Study of Programming Languages in Rosetta Code"} in ICSE '15, Proceedings of the 37th International Conference on Software Engineering, vol.1, pp.778-788
+%\bibitem{}
+%Iowa State University of Science and Technology,  \emph{"Boa - Mining Ultra-Large-Scale Software Repositories"}, http://boa.cs.iastate.edu/
 
 
-\end{thebibliography}
+%\end{thebibliography}
 
 % biography section
 % 
