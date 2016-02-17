@@ -1,0 +1,22 @@
+*hot fixes - motivation why is it important?
+
+Generally, a hotfix is related to correcting a critical problem which prevents a particular software product from performing
+as expected. This could mean a total or partial loss of service, a major security breach that has to be patched instantly, etc.
+As a result, such a fix is done outside of normal development and testing procedures. This characteristic of hotfixes implies
+that rapid development under urgent circumstances is usually required. Therefore, it can be often the case that lots of additional
+people and resources need to be allocated quickly for the correction, which leads to a significant increase in the cost of the
+overall product.
+
+Another aspect that makes hotfixes so important for consideration is the fact that generally teams do not plan in advance for this
+type of corrections into their development cycle. The main reason being is that the nature of hotfixes makes them unpredictable.
+Moreover, such corrections are sometimes delayed on purpose because people are afraid of the risk of applying the fix. All of these
+factors contribute to increasing the uncertainty and stress in managers and that can prevent them from taking the most appropriate
+action when a problem in production has to be resolved promptly.
+
+Therefore, with our research we aim to help project managers and developers make a more informed decision when deciding what 
+languages to use by comparing the number of hotfixes per programming language. To provide a better picture we also look at 
+hotfixes per specific software topic. 
+
+Overall, we focus on revealing data that will help project managers and developers overcome the already mentioned challenges 
+related to hotfixes. We will do that by allowing these stakeholders to estimate more accurately the impact of hotfixes on 
+their development cycle.
