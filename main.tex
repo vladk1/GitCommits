@@ -119,11 +119,11 @@ We discuss Related Work in section 2. The next segment discusses our Solution. F
 
 
 \section{Related Work}
-Many researchers have explored various aspects of defects in software through the use of versioning system history logs. We have also decided to follow this approach due to its openness and accessibility. This method is also very widely adopted amongst the MSR community \cite{Hattori2008}. Our investigation focused primarily on two research aspects and involved exploring existing work related to: 1) identifying hotfix commits and 2) comparison of programming languages’ stability.
+Many researchers have explored various aspects of defects in software through the use of versioning system history logs. We have also decided to follow this approach due to its openness and accessibility. This method is also very widely adopted amongst the MSR community \cite{Hattori2008}. Our investigation focused primarily on two research aspects and involved exploring existing work related to: 1) identifying hotfix commits and 2) comparison of programming languages' stability.
 
 
 \subsection{Identifying hotfix commits}
-The first major problem we had to solve was identifying actual hotfix commits. Due to Boa’s limitations, we were not able to find commit history from hotfix branch. We were only capable of collecting information with regard to commits performed on the main branch. Therefore, we reviewed various papers to identify the most appropriate method of determining the type of the commit to extract only the ones related to a bug correction.\par
+The first major problem we had to solve was identifying actual hotfix commits. Due to Boa's limitations, we were not able to find commit history from hotfix branch. We were only capable of collecting information with regard to commits performed on the main branch. Therefore, we reviewed various papers to identify the most appropriate method of determining the type of the commit to extract only the ones related to a bug correction.\par
 
 A large number of the reports that we studied implemented a very simple approach. They focused on the commit message as the main mechanism to try to identify whether a commit was of a corrective type~\cite{Hattori2008, Ratzinger2008, Hindle2008}. They simply investigated if the string of text contained particular key words, such as: ``bug'', ``fix'', ``issue'', ``error'', ``broke'', etc.\par
 
@@ -133,7 +133,7 @@ Another approach to identify bug fix commits involved performing a classificatio
 
 We also looked at the time factor with regard to commits. According to some authors, issues in critical components (e.g. errors in operating system drivers, security errors) tend to be fixed relatively quickly when discovered \cite{Livshits2005}. In \cite{Mockus2000}, the researchers argue that the time between changes will depend on the type of alteration. Furthermore, they hold the view that corrective changes require the least amount of time to be completed as often they have to be performed promptly regardless of the complexity of the task.\par
 
-In terms of the time aspect, there was another paper which investigated the duration between the moment when a change is applied to a specific branch and the moment the new code was merged into the trunk \cite{Williams2008}. However, they explored branches in general without focusing specifically on bugfix branches. Some other scientists were trying to explain people’s behaviour during commits by investigating their commit frequency distribution. As a result, they discovered that on average the time between commits was 3.206 days and half of all the contributors spent less than 13.78 hours between 50\% of their commits \cite{Kolassa2013}.\par
+In terms of the time aspect, there was another paper which investigated the duration between the moment when a change is applied to a specific branch and the moment the new code was merged into the trunk \cite{Williams2008}. However, they explored branches in general without focusing specifically on bugfix branches. Some other scientists were trying to explain people's behaviour during commits by investigating their commit frequency distribution. As a result, they discovered that on average the time between commits was 3.206 days and half of all the contributors spent less than 13.78 hours between 50\% of their commits \cite{Kolassa2013}.\par
 
 Another solution related to identifying defects in software focused on analysing commit metadata to discover design smells and predict where a break in different areas of the code may appear every time a change is performed \cite{Oliva2013}. However, they did not make their investigation language-specific as opposed to what we propose in our paper.\par
 
@@ -203,7 +203,7 @@ From all the available projects, we only concentrated on the ones that had incor
 We started with investigating the overall reliability of different languages regardless of the topic they belonged to.\\
 \begin{figure}
 \centering
-\includegraphics[width=0.75\textwidth]{Bar_chart}
+\includegraphics[width=0.5\textwidth]{Bar_chart}
 \caption{Overall hotfixes per programming languages for 100 releases.}
 \label{fig:my_label}
 \end{figure}
@@ -259,7 +259,7 @@ We can see from our results that for programming games, Java seems to be the mos
 The strongly-typed languages we consider are: Java, Python.\par
 The weakly-typed languages we consider are: C, C++.\par
 
-Java is the most reliable language by far according to our results. C, C++ and Python have quite similar hotfix rates. Java is a strongly-typed language which has a definitive advantage over the others. Thus, we can say this aspect of our hypothesis is somewhat supported. It’s only partially justified because while Python, C and C++ have similar hotfix rates, Python still ranks at the bottom of our results table.\\
+Java is the most reliable language by far according to our results. C, C++ and Python have quite similar hotfix rates. Java is a strongly-typed language which has a definitive advantage over the others. Thus, we can say this aspect of our hypothesis is somewhat supported. It's only partially justified because while Python, C and C++ have similar hotfix rates, Python still ranks at the bottom of our results table.\\
 
 \textbf{Hypothesis 2}:\par
 
@@ -326,7 +326,7 @@ There were several limitations that we encountered throughout our research:
 \end{itemize}
 
 \section{Conclusions and Future Work}
-We have presented a research in detecting the fault-proneness of programming languages through hotfix commits - a topic that has not been investigated so far. To increase the significance of our study we performed both an overall estimation of hotfixes and a topic-specific analysis. The tool that we created was written in Boa and mined repositories from SourceForge 2013’s dataset. Our goal was to verify whether the general relationships between languages’ reliability holds with regard to hotfixes. Specifically, we investigated the following relations: strongly-typed vs weakly-typed languages, static vs dynamic and functional vs procedural. We expected that in each pair the first group of languages will be dominant. Although our overall results supported our hypothesis, on a topic-by-topic basis we were not able to verify it.\par
+We have presented a research in detecting the fault-proneness of programming languages through hotfix commits - a topic that has not been investigated so far. To increase the significance of our study we performed both an overall estimation of hotfixes and a topic-specific analysis. The tool that we created was written in Boa and mined repositories from SourceForge 2013's dataset. Our goal was to verify whether the general relationships between languages' reliability holds with regard to hotfixes. Specifically, we investigated the following relations: strongly-typed vs weakly-typed languages, static vs dynamic and functional vs procedural. We expected that in each pair the first group of languages will be dominant. Although our overall results supported our hypothesis, on a topic-by-topic basis we were not able to verify it.\par
 Therefore, we believe that some future work has to be accomplished to increase the validity of our observations. In particular, more datasets could be used, including Github (provided that projects are categorised into topics). Further improvements may be done to identify bump commits more accurately. Recently, a few commercial projects have been open-sourced and as a result, we could use them to enhance the quality of our data. In such projects, releases will have occurred more frequently and thus, there is a higher probability of identifying more hotfixes.\par
 Finally, we believe that our paper provides a good foundation for future research to be done in this topic. We expect that the results we obtained will help developers and project managers improve their planning and understand what the most appropriate languages are for their specific topic.
 
