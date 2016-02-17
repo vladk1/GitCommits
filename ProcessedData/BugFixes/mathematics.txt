@@ -1,0 +1,11 @@
+c++ 29.3284313725  bf=5983 bc=204
+python 32.962962963  bf=890 bc=27
+matlab 37.3818181818  bf=2056 bc=55
+fortran 48.4259259259  bf=2615 bc=54
+c 51.8222222222  bf=2332 bc=45
+java 61.9873417722  bf=4897 bc=79
+objective c 82.0  bf=164 bc=2
+s/r 121.5  bf=486 bc=4
+lisp 227.0  bf=227 bc=1
+common lisp 398.0  bf=398 bc=1
+standard ml 825.0  bf=1650 bc=2

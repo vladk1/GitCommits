@@ -2,6 +2,7 @@
 p: Project = input;
 countsBump: output top(20) of string weight int;
 foundFixCommits: output top(20) of string weight int;
+hasBumpVersion := false;
 
 filterTopics: set of string;
 # Add topics that you are interested to scan for hotfixes scan:
@@ -9,7 +10,7 @@ filterTopics: set of string;
 #add(filterTopics, "Software Development");
 #add(filterTopics, "Frameworks");
 #add(filterTopics, "Games/Entertainment");
-add(filterTopics, "Site Management");
+#add(filterTopics, "Site Management");
 #add(filterTopics, "Other/Nonlisted Topic");
 #add(filterTopics, "Internet");
 #add(filterTopics, "Role-Playing");
@@ -35,25 +36,52 @@ IsBumpVersion := function(commit_log: string): bool {
 
 visit(p, visitor {
     before node: Project -> {
+        hasBumpVersion = false;
         clear(programmingLanguages);
-        exists (i: int; contains(filterTopics, node.topics[i])) {
+#        exists (i: int; contains(filterTopics, node.topics[i])) {
             foreach (j: int; def(node.programming_languages[j])) {
                 programmingLanguages[j] = node.programming_languages[j];
             }
+#        }
+
+        foreach (i: int; def(node.code_repositories[i])) {
+            foreach (j: int; def(node.code_repositories[i].revisions[j])) {
+                if(IsBumpVersion(node.code_repositories[i].revisions[j].log)) {
+                    hasBumpVersion = true;
+                }
+            }
         }
         
+        if(hasBumpVersion)
+        {
+            foreach (i: int; def(node.code_repositories[i])) {
+                foreach (j: int; def(node.code_repositories[i].revisions[j])) {
+                    if(IsBumpVersion(node.code_repositories[i].revisions[j].log)) {
+                        foreach (k: int; def(programmingLanguages[k])) {
+    	                    countsBump << programmingLanguages[k] weight 1;
+    	                }
+                    }
+                    if(isfixingrevision(node.code_repositories[i].revisions[j].log)) {
+    	                foreach (k: int; def(programmingLanguages[k])) {
+                            foundFixCommits << programmingLanguages[k] weight 1;
+    	                }
+    	            }
+                }
+            }
+        }
     }
-    before node: Revision -> {
-	   if(IsBumpVersion(node.log)) {
-	       foreach (j: int; def(programmingLanguages[j])) {
-	            countsBump << programmingLanguages[j] weight 1;
-	       }
-	   }
-	   
-	   if(isfixingrevision(node.log)) {
-	       foreach (j: int; def(programmingLanguages[j])) {
-                foundFixCommits << programmingLanguages[j] weight 1;
-	       }
-	   }
-    }
+#    before node: Revision -> {
+#	   if(IsBumpVersion(node.log)) {
+#	       foreach (j: int; def(programmingLanguages[j])) {
+#	            countsBump << programmingLanguages[j] weight 1;
+#	       }
+#	       hasBumpVersion = true;
+#	   }
+#	   
+#	   if(isfixingrevision(node.log)) {
+#	       foreach (j: int; def(programmingLanguages[j])) {
+#                foundFixCommits << programmingLanguages[j] weight 1;
+#	       }
+#	   }
+#    }
 });

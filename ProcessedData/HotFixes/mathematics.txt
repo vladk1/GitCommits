@@ -1,0 +1,9 @@
+c++ 0.294117647059  hf=60 bc=204
+python 0.296296296296  hf=8 bc=27
+java 0.354430379747  hf=28 bc=79
+c 0.444444444444  hf=20 bc=45
+matlab 0.454545454545  hf=25 bc=55
+fortran 0.481481481481  hf=26 bc=54
+objective c 0.5  hf=1 bc=2
+standard ml 0.5  hf=1 bc=2
+lisp 1.0  hf=1 bc=1

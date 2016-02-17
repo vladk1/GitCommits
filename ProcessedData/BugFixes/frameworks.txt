@@ -1,0 +1,18 @@
+scala 4.30034129693  bf=1260 bc=293
+flex 27.0  bf=108 bc=4
+actionscript 27.0  bf=108 bc=4
+java 34.2295632699  bf=30567 bc=893
+delphi/kylix 86.0  bf=172 bc=2
+free pascal 86.0  bf=172 bc=2
+pascal 86.0  bf=172 bc=2
+javascript 124.090909091  bf=1365 bc=11
+groovy 138.166666667  bf=829 bc=6
+perl 154.62195122  bf=12679 bc=82
+python 167.511904762  bf=14071 bc=84
+assembly 170.277777778  bf=12260 bc=72
+php 182.068965517  bf=5280 bc=29
+c++ 187.739130435  bf=17272 bc=92
+c# 190.153846154  bf=4944 bc=26
+idl 191.5  bf=383 bc=2
+unix shell 191.5  bf=383 bc=2
+lua 429.0  bf=429 bc=1

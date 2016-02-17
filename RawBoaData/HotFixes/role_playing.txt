@@ -1,0 +1,17 @@
+countsBump[] = c++, 139
+countsBump[] = java, 81
+countsBump[] = python, 77
+countsBump[] = assembly, 74
+countsBump[] = perl, 73
+countsBump[] = c, 64
+countsBump[] = lua, 11
+countsBump[] = c#, 9
+countsBump[] = visual basic, 1
+foundFixCommits[] = c++, 71
+foundFixCommits[] = c, 36
+foundFixCommits[] = python, 31
+foundFixCommits[] = perl, 30
+foundFixCommits[] = assembly, 26
+foundFixCommits[] = java, 26
+foundFixCommits[] = c#, 8
+foundFixCommits[] = lua, 5

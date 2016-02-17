@@ -1,0 +1,16 @@
+scala 0.0819112627986  hf=24 bc=293
+java 0.0884658454647  hf=79 bc=893
+groovy 0.166666666667  hf=1 bc=6
+javascript 0.181818181818  hf=2 bc=11
+c# 0.269230769231  hf=7 bc=26
+php 0.310344827586  hf=9 bc=29
+perl 0.317073170732  hf=26 bc=82
+python 0.357142857143  hf=30 bc=84
+assembly 0.361111111111  hf=26 bc=72
+c++ 0.434782608696  hf=40 bc=92
+flex 0.5  hf=2 bc=4
+free pascal 0.5  hf=1 bc=2
+delphi/kylix 0.5  hf=1 bc=2
+pascal 0.5  hf=1 bc=2
+actionscript 0.5  hf=2 bc=4
+lua 1.0  hf=1 bc=1

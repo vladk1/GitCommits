@@ -1,0 +1,16 @@
+assembly 14.125  bf=226 bc=16
+c# 15.6428571429  bf=219 bc=14
+javascript 26.0  bf=26 bc=1
+xsl (xslt/xpath/xsl-fo) 26.0  bf=52 bc=2
+project is a programming language 26.0  bf=26 bc=1
+unix shell 37.3333333333  bf=224 bc=6
+java 44.2741935484  bf=2745 bc=62
+c 50.640625  bf=3241 bc=64
+fortran 56.3333333333  bf=507 bc=9
+c++ 64.9  bf=2596 bc=40
+python 65.0833333333  bf=781 bc=12
+delphi/kylix 77.5  bf=310 bc=4
+modula 77.5  bf=310 bc=4
+pascal 100.8  bf=504 bc=5
+ada 194.0  bf=194 bc=1
+object pascal 314.0  bf=1884 bc=6

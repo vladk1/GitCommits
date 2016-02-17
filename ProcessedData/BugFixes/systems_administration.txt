@@ -1,0 +1,13 @@
+ruby 53.0  bf=53 bc=1
+c 77.1125  bf=6169 bc=80
+python 91.8571428571  bf=1929 bc=21
+java 93.575  bf=3743 bc=40
+perl 96.8421052632  bf=1840 bc=19
+php 96.95  bf=3878 bc=40
+c++ 105.939393939  bf=3496 bc=33
+unix shell 264.166666667  bf=1585 bc=6
+tcl 271.5  bf=1086 bc=4
+javascript 275.4  bf=1377 bc=5
+visual basic 291.0  bf=291 bc=1
+c# 304.1  bf=3041 bc=10
+rexx 1259.5  bf=5038 bc=4
