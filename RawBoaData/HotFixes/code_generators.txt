@@ -1,0 +1,16 @@
+countsBump[] = java, 141
+countsBump[] = c, 78
+countsBump[] = c++, 78
+countsBump[] = php, 22
+countsBump[] = python, 5
+countsBump[] = javascript, 3
+countsBump[] = fortran, 2
+countsBump[] = object pascal, 2
+countsBump[] = ada, 1
+countsBump[] = ocaml (objective caml), 1
+countsBump[] = pascal, 1
+countsBump[] = unix shell, 1
+foundFixCommits[] = c, 57
+foundFixCommits[] = c++, 57
+foundFixCommits[] = java, 8
+foundFixCommits[] = php, 3
