@@ -1,22 +1,3 @@
-% \documentclass[conference]{IEEEtran}
-
-% \begin{document}
-% \title{An Important Conference Contribution}
-
-% \author{\IEEEauthorblockN{Author One\IEEEauthorrefmark{1},
-% Author Two\IEEEauthorrefmark{2}, Author Three\IEEEauthorrefmark{3} and
-% Author Four\IEEEauthorrefmark{4}}
-% \IEEEauthorblockA{Department of Whatever,
-% Whichever University\\
-% Wherever\\
-% Email: \IEEEauthorrefmark{1}author.one@add.on.net,
-% \IEEEauthorrefmark{2}author.two@add.on.net,
-% \IEEEauthorrefmark{3}author.three@add.on.net,
-% \IEEEauthorrefmark{4}author.four@add.on.net}}
-% \maketitle
-
-% \end{document}
-
 \documentclass{sig-alternate}
 \usepackage{blindtext, graphicx}
 \usepackage{fancyhdr} 
@@ -28,148 +9,88 @@
 \graphicspath{ {images/} }
 
 \newcommand\FIXME[1]{\textbf{FIXME: #1}}
-%\fancyhf{}
-%\cfoot{\thepage}
-%\pagestyle{fancy}
 
-% *** GRAPHICS RELATED PACKAGES ***
-%
-%\ifCLASSINFOpdf
-  % \usepackage[pdftex]{graphicx}
-  % declare the path(s) where your graphic files are
-  % \graphicspath{{../pdf/}{../jpeg/}}
-  % and their extensions so you won't have to specify these with
-  % every instance of \includegraphics
-  % \DeclareGraphicsExtensions{.pdf,.jpeg,.png}
-%\else
-  % or other class option (dvipsone, dvipdf, if not using dvips). graphicx
-  % will default to the driver specified in the system graphics.cfg if no
-  % driver is specified.
-  % \usepackage[dvips]{graphicx}
-  % declare the path(s) where your graphic files are
-  % \graphicspath{{../eps/}}
-  % and their extensions so you won't have to specify these with
-  % every instance of \includegraphics
-  % \DeclareGraphicsExtensions{.eps}
-%\fi
-
-% correct bad hyphenation here
-%\hyphenation{op-tical net-works semi-conduc-tor}
-
-%\pagenumbering{arabic}
 \begin{document}
 \conferenceinfo{MSR}{'16 Austin, Texas USA}
-%
-% paper title
-% can use linebreaks \\ within to get better formatting as desired
-
-\title{Investigating Fault-Proneness Through Hotfix Commits:\\A Research in the Light of Different Programming Languages}
-\numberofauthors{4}
+\title{Investigating Fault-Proneness Through Hotfix Commits in the Light of Different Programming Languages}
+%\numberofauthors{6}
 \author{
-  Martin Lazarov, Ismaa'eel Ataullah, Vladyslav Kolesnyk, Veselin Pavlov\\
+  Martin Lazarov, Ismaa'eel Ataullah, Vladyslav Kolesnyk, Veselin Pavlov,\\ Chaiyong Ragkhitwetsagul, Jens Krinke\\
   \affaddr{University College London}\\
   \affaddr{London, UK}
 }
 
-
-%\title{Investigating Fault-Proneness Through Hotfix Commits: A Research in the Light of Different Programming Languages}
-
-% author names and affiliations
-% use a multiple column layout for up to three different
-% affiliations
-%\author{\IEEEauthorblockN{Martin Lazarov\IEEEauthorrefmark{1},
-%Ismaa'eel Ataullah\IEEEauthorrefmark{2}, Vladyslav Kolesnyk\IEEEauthorrefmark{3},
-%Veselin Pavlov\IEEEauthorrefmark{4}}
-%\IEEEauthorblockA{Department of Computer Science,
-%UCL\\
-%Email: \IEEEauthorrefmark{1}martin.lazarov.12@ucl.ac.uk,
-%\IEEEauthorrefmark{2}ismaaeel.ataullah.12@ucl.ac.uk,
-%\IEEEauthorrefmark{3}vladyslav.kolesnyk.12@ucl.ac.uk,
-%\IEEEauthorrefmark{4}veselin.pavlov.15@ucl.ac.uk}}
-
-% make the title area
 \maketitle
 
 \begin{abstract}
-%\boldmath
-Choosing the most suitable programming language is a very challenging task for every project manager and developer. Often the success of a software project is determined by the stability of the system after a release. In this paper, we propose analysing hotfix commits in various development areas as a means of indicating what languages tend to produce the least amount of problems after software has been published. We have focused on parsing metadata from the 16 most popular projects hosted on SourceForge and have performed an estimation of the amount of deployed hotfixes to compare the fault-proneness of various languages. 
+Choosing the most suitable programming language is a challenging task for every project manager and developer. Often the success of a software project is determined by the stability of the system after a release. We analyse the prevalence of hotfix commits in various development areas as an indicator of which languages tend to produce the least amount of problems after software has been published. Based on the Boa September 2013 SourceForge dataset, we analysed the metadata from the 16 most popular project types and estimated the amount of deployed hotfixes to compare the fault-proneness of programming languages that are use across project types. Our results only identified 6 languages that are widely used across different domains, Java, C, C++, C\#, Perl, and PHP. Java has the least number of hotfixes per version update (0.18), while C\# required most hotfixes per version update (0.34). We identified the Security and Internet \& Communications project types as being the most reliable (i.e.\ requiring least amount of hotfixes per version update). The analysis did not reveal conclusive patterns for language classes (strongly vs.\ weakly typed and dynamic vs.\ static).
 \end{abstract}
 
 % A category with the (minimum) three required fields
-\category{D.2.7}{Software Engineering}{\FIXME{}}
+%\category{D.2.7}{Software Engineering}{\FIXME{}}
 %A category including the fourth, optional field follows...
 
 %\terms{Experimentation, Measurement, Languages, Performance}
 
-\keywords{Version Control, hotfixes, SourceForge, commits metadata}
-
-%\begin{IEEEkeywords}
-%Version Control, hotfixes, SourceForge, commits metadata.
-%\end{IEEEkeywords}
+%\keywords{Version Control, hotfixes, SourceForge, commits metadata}
 
 \section{Introduction}
-Planning and resource allocation are arguably the most crucial components of any software project. Our research was motivated by the fact that very often, in the planning phase project managers neglect the importance of hotfixes - which becomes essential once a project is deployed.
+Planning and resource allocation are arguably the most crucial components of any software project. In the planning phase, project managers often neglect the importance of hotfixes -- which becomes essential once a project is deployed.  A hotfix is correcting a critical problem which prevents a particular software product from performing as expected. This could mean a total or partial loss of service, a major security breach that has to be patched instantly, etc. As a result, such a fix is done outside of normal development and testing procedures. The characteristic of hotfixes implies that rapid development under urgent circumstances is usually required. Therefore, it can be often the case that additional resources need to be allocated quickly for the correction, which leads to a significant increase in the cost of the overall product.
 
-Generally, a hotfix is related to correcting a critical problem which prevents a particular software product from performing as expected. This could mean a total or partial loss of service, a major security breach that has to be patched instantly, etc. As a result, such a fix is done outside of normal development and testing procedures. This characteristic of hotfixes implies that rapid development under urgent circumstances is usually required. Therefore, it can be often the case that lots of additional people and resources need to be allocated quickly for the correction, which leads to a significant increase in the cost of the overall product.
+% Another aspect that makes hotfixes so important is their unpredictability which further prevents teams from planning in advance for such corrections into their development cycle. Moreover, hotfixes are sometimes delayed on purpose because people are afraid of the risk of applying the fix. All of these factors contribute to increasing the uncertainty and stress in managers and that can prevent them from taking the most appropriate action when a problem in production has to be resolved promptly.
 
-Another aspect that makes hotfixes so important is their unpredictability which further prevents teams from planning in advance for such corrections into their development cycle. Moreover, hotfixes are sometimes delayed on purpose because people are afraid of the risk of applying the fix. All of these factors contribute to increasing the uncertainty and stress in managers and that can prevent them from taking the most appropriate action when a problem in production has to be resolved promptly.
+There are no clear definitions of what a hotfix is, we define a hotfix as \emph{a corrective commit deployed shortly after a project's release to fix a critical issue}. Inspired by work on the impact of programming languages on code quality, we investigated how programming languages impact the frequency of hotfixes.  Because project domains strongly influence the choice of a programming language, we restricted our analysis on programming languages that are used \emph{across} project domains.
 
-As there are no clear definitions that specify what a hotfix is, according to our research and observations from the open-source projects, a hotfix can be defined as: ``a corrective commit deployed within 1 day, following a project's version update to fix critical issues in the release''.\par
+%With our research we aim to help project managers and developers make a more informed decision when deciding what languages to use by comparing the number of hotfixes per programming language. To provide a better picture we also look at hotfixes per specific software topics. 
 
-With our research we aim to help project managers and developers make a more informed decision when deciding what languages to use by comparing the number of hotfixes per programming language. To provide a better picture we also look at hotfixes per specific software topics. 
+%We believe that the results from our research can provide insights into the average number of issues per project with a focus on different programming topics and the relevant languages used. Consequently, project managers will be able to make a more informed decision with regard to the most appropriate programming languages they could use to try to achieve a minimum number of problems in production. This will improve software engineering practices and the overall project planning activity. Furthermore, it will help optimise the allocation of resources.
 
-We believe that the results from our research can provide insights into the average number of issues per project with a focus on different programming topics and the relevant languages used. Consequently, project managers will be able to make a more informed decision with regard to the most appropriate programming languages they could use to try to achieve a minimum number of problems in production. This will improve software engineering practices and the overall project planning activity. Furthermore, it will help optimise the allocation of resources.
-The contributions of this paper are:
-
+The main contributions of this paper are:
+%
 \begin{itemize}
-  \item parameters to determine most probable hotfix commits in the repository.
-  \item a quantitative analysis identifying fault-proneness of specific programming topics and the relevant distribution of faults across programming languages.
-  \item an evaluation of the most used languages used across the top 16 most popular domains identified by SourceForge 13'.
-  \item an investigation into the languages that achieve the highest/lowest ratios of hotfix per version update.
-  \item research into the programming topics that experience the highest/lowest numbers of hotfix per version increase.
-  \item an investigation into the following relationships between languages: strongly-typed vs weakly-typed, static vs dynamic and scripting vs procedural to try to determine what group of languages is the most reliable.
-  \item a foundation for future research in the area of identifying language-specific hotfixes.
+  \item An  approach to identify hotfix commits in repositories.
+  \item A quantitative analysis identifying fault-proneness of specific programming topics and the distribution of faults across programming languages. The analysis identified that only six languages are used across the top 16 most popular domains identified by the Boa SourceForge 2013 dataset.
+  \item An investigation on the impact of language classes on reliability: strongly-typed vs weakly-typed, static vs dynamic and scripting vs procedural. The investigation showed no clear pattern on the impact of language classes.
 \end{itemize}
-
-The rest of the paper is organised as follows: Related work is discussed in section 2. Section 3 explains our empirical study with 4 research questions. In Section 4, the results are presented and discussed and followed by our conclusion and future work in Section 5.
+%
+Related work is discussed in the next section. Section 3 explains our empirical study and its results, followed by conclusions and future work.
 
 \section{Related Work}
-Many researchers have explored various aspects of defects in software through the use of versioning system history logs. We have also decided to follow this approach due to its openness and accessibility. This method is also very widely adopted amongst the MSR community \cite{Hattori2008}. Our investigation focused primarily on two research aspects and involved exploring existing work related to: 1) identifying hotfix commits and 2) comparison of programming languages' stability.
+%Many researchers have explored various aspects of defects in software through the use of versioning system history logs. We have also decided to follow this approach due to its openness and accessibility. This method is also very widely adopted amongst the MSR community \cite{Hattori2008}. 
 
+Our investigation focused primarily on two research aspects and existing work related to 1) comparison of programming languages impact, and 2) identifying hotfix commits.
+
+% Another solution related to identifying defects in software focused on analysing commit metadata to discover design smells and predict where a break in different areas of the code may appear every time a change is performed \cite{Oliva2013}. However, they did not make their investigation language-specific as opposed to what we propose in our paper.\par
+
+% Other scientists tried to explore the logical coupling of commits as a way of identifying potential software defects. They aimed at developing a method to reduce the number of bugs in the code during the development stage so that less fix commits will be needed in the future \cite{Steff2012}.\par
+
+% A further interesting research that we found was related to the use of separate bug fix branches. According to the study performed by Phillips et al. \cite{Phillips2011}, 41\% of the tested projects had incorporated an isolated bug fix branch.
+
+
+\subsection{Comparison of programming languages}
+%Throughout our investigation we discovered that there were a lot of authors that tried to utilize commit data to try to propose good engineering practices and find a way to determine code quality \cite{Agrawal2015}. Furthermore, there were several papers that compared and contrasted the performance of different languages, which led to our second research topic. We explored these existing scientific studies to see what techniques authors had implemented. We also analysed the hypotheses these papers proposed to increase the scope of our project.\par
+
+%Our specific point of interest was related to different software topics and programming languages to discover how number of hotfixes per topic depend on the language developers use.\par
+
+The main related work focussing on the effect of programming languages~\cite{Ray2014} is based on the rate of defect occurrences in various languages. The study was carried out on a huge dataset from GitHub (1.5 million commits). To evaluate the effect that programming languages have on software quality, the authors grouped languages according to their type, e.g.\ strongly vs.\ weakly typed. They also used mathematical methods to triangulate and produce statistics for how group size, project history and number of contributors affect the number of defects. In order to achieve more representative results, they took a sample of 17 languages and extracted the top 50 projects per language. The results showed how defect-prone languages are compared to others. This research focused on classifying bugs based on their type, while we focused specifically on the distribution of hotfixes across programming languages.
+
+Phipps et al.~\cite{Phipps1999} evaluated Java and C++ by comparing bug rates. There were two definitions for bugs: defect and bug. Defects included issues such as syntax errors, logical errors and changes in variable name. A bug itself was only defined to be a problem detected during testing or deployment. The mean number of defects and bugs, averaged over a number of projects, was compared between both languages per 1000 lines of code. The work also observed defects and bugs per hour as well as the time taken to fix defects in both languages. Productivity was measured by analysing number of lines written per second.
+
+Other work used different parameters to compare programming languages, for example, program length, programming effort, run-time efficiency, memory consumption, and reliability \cite{Prechelt2000}.  Fourment and Gilling~\cite{Fourment2008} analysed memory usage and speed of execution of three different bioinformatics methods for six distinct programming languages. This was especially pertinent as bioinformatics applications have huge datasets and computational time taken is not trivial, hence optimising speed is desirable.
+
+Another recent work~\cite{Nanz2015} compared 8 different languages by conciseness, size of executables, running time, memory usage and failure proneness, arguing that conciseness is an important factor as a more compact language can help write a program with fewer bugs.
 
 \subsection{Identifying hotfix commits}
-The first major problem we had to solve was identifying actual hotfix commits. Due to Boa's limitations, we were not able to find commit history from hotfix branch. We were only capable of collecting information with regard to commits performed on the main branch. Therefore, we reviewed various papers to identify the most appropriate method of determining the type of the commit to extract only the ones related to a bug correction.\par
+%The first major problem we had to solve was identifying actual hotfix commits. Due to Boa's limitations, we were not able to find commit history from hotfix branch. We were only capable of collecting information with regard to commits performed on the main branch. Therefore, we reviewed various papers to identify the most appropriate method of determining the type of the commit to extract only the ones related to a bug correction.\par
 
-A large number of the reports that we studied implemented a very simple approach. They focused on the commit message as the main mechanism to try to identify whether a commit was of a corrective type~\cite{Hattori2008, Ratzinger2008, Hindle2008}. They simply investigated if the string of text contained particular key words, such as: ``bug'', ``fix'', ``issue'', ``error'', ``broke'', etc.\par
+A large number of previous work use a simple approach to identify bug-fixing commits. They use the commit message as the main mechanism to identify whether a commit was of a corrective type by simply investigating if the message contains particular key words, such as ``bug'', ``fix'', ``issue'', ``error'', ``broke'', etc.~\cite{Hattori2008, Ratzinger2008, Hindle2008}.  Others proposed a solution that involved a slightly more complex procedure including a syntactic analysis of the commit messages. Their algorithm consists of multiple steps: 1) normalization of the data (removing non-alphanumeric characters), 2) word frequency analysis including a classification of the most common words ( e.g. ``for'', ``code'', ``to'', ``the'', etc. ) as being neutral, 3) implementing a keyword clustering algorithm to classify the commits~\cite{Mockus2000}.
 
-Some authors proposed a solution that involved a slightly more complex procedure including a syntactic analysis of the commit messages. Their algorithm consisted of multiple steps: 1) normalization of the data (removing non-alphanumeric characters), 2) word frequency analysis including a classification of the most common words ( e.g. ``for'', ``code'', ``to'', ``the'', etc. ) as being neutral, 3) implementing a keyword clustering algorithm to classify the commits \cite{Mockus2000}.\par
+Another approach to identify bug fix commits performs a classification based on the size of the commits~\cite{Hattori2008,Mockus2000,Hindle2008}. The size of a commit can be measured based on the number of lines or the amount of files that were changed. Large commits tend to improve code quality or add new features, while small ones are considered to be corrective -- targeted at fixing bugs in the project. A fine-grained size classification depending on the number of files changed per commit defined the following categories: 1) tiny (1 to 5 changed files), 2) small (6 to 25 files), 3) medium (26 to 125 files), large~\cite{Hattori2008}. The authors argued that most of the commits tend to be tiny (in 80\% of the cases) which implies that bug fix commits occur very often as corrective commits tend to be small ones.
 
-Another approach to identify bug fix commits involved performing a classification based on the size of the commits \cite{Hattori2008,Mockus2000,Hindle2008}. The size of a commit can be measured based on the number of lines or the amount of files that were changed. According to these authors, large commits tend to improve code quality or add new features, while small ones are considered to be corrective - targeted at fixing bugs in the project. Some researchers proposed a further fine-grained size classification depending on the number of files changed per commit \cite{Hattori2008}. They defined the following categories: 1) tiny (1 to 5 changed files), 2) small (6 to 25 files), 3) medium (26 to 125 files), large (126 up ). The scientists further argued that most of the commits tend to be tiny (in 80\% of the cases). This implies that bug fix commits occur very often as corrective commits tend to be small ones.\par
+Issues in critical components (e.g.~errors in operating system drivers, security errors) tend to be fixed relatively quickly when discovered~\cite{Livshits2005}. Mockus and Votta~\cite{Mockus2000} argue that the time between changes will depend on the type of alteration and that corrective changes require the least amount of time to be completed as they often have to be performed promptly regardless of the complexity of the task.
 
-We also looked at the time factor with regard to commits. According to some authors, issues in critical components (e.g. errors in operating system drivers, security errors) tend to be fixed relatively quickly when discovered \cite{Livshits2005}. In \cite{Mockus2000}, the researchers argue that the time between changes will depend on the type of alteration. Furthermore, they hold the view that corrective changes require the least amount of time to be completed as often they have to be performed promptly regardless of the complexity of the task.\par
+Williams and Spacco~\cite{Williams2008} investigated the duration between the moment when a change is applied to a specific branch and the moment the new code was merged into the trunk. However, they explored branches in general without focusing specifically on bugfix branches. Kolassa et al.~\cite{Kolassa2013} try to explain people's behaviour during commits by investigating their commit frequency distribution. They discovered that on average the time between commits was 3.206 days and half of all the contributors spent less than 13.78 hours between 50\% of their commits.
 
-In terms of the time aspect, there was another paper which investigated the duration between the moment when a change is applied to a specific branch and the moment the new code was merged into the trunk \cite{Williams2008}. However, they explored branches in general without focusing specifically on bugfix branches. Some other scientists were trying to explain people's behaviour during commits by investigating their commit frequency distribution. As a result, they discovered that on average the time between commits was 3.206 days and half of all the contributors spent less than 13.78 hours between 50\% of their commits \cite{Kolassa2013}.\par
-
-Another solution related to identifying defects in software focused on analysing commit metadata to discover design smells and predict where a break in different areas of the code may appear every time a change is performed \cite{Oliva2013}. However, they did not make their investigation language-specific as opposed to what we propose in our paper.\par
-
-Other scientists tried to explore the logical coupling of commits as a way of identifying potential software defects. They aimed at developing a method to reduce the number of bugs in the code during the development stage so that less fix commits will be needed in the future \cite{Steff2012}.\par
-
-A further interesting research that we found was related to the use of separate bug fix branches. According to the study performed by Phillips et al. \cite{Phillips2011}, 41\% of the tested projects had incorporated an isolated bug fix branch.
-
-\subsection{Comparison of programming languages' stability}
-Throughout our investigation we discovered that there were a lot of authors that tried to utilize commit data to try to propose good engineering practices and find a way to determine code quality \cite{Agrawal2015}. Furthermore, there were several papers that compared and contrasted the performance of different languages, which led to our second research topic. We explored these existing scientific studies to see what techniques authors had implemented. We also analysed the hypotheses these papers proposed to increase the scope of our project.\par
-
-Our specific point of interest was related to different software topics and programming languages to discover how number of hotfixes per topic depend on the language developers use.\par
-
-There were researchers that focused on the effect of programming languages on software quality \cite{Ray2014}. The authors based performance on the rate of defect occurrences in various languages. The study was carried out on a huge dataset from GitHub (1.5 million commits). To evaluate the effect that programming languages have on software quality, the authors implemented the following strategy. First, they grouped languages according to their type, i.e. strongly vs weakly typed. They also used mathematical methods to triangulate and produce statistics for how group size, project history and number of contributors affect the number of defects. In order to achieve more representative results, they took a sample of 17 languages and extracted the top 50 projects per language. The results showed how defect-prone languages are compared to others. This was done by taking a grand mean and then comparing each language to the grand mean. Languages were then grouped, a mean was taken and then types of languages were once again compared to a grand mean - e.g. functional-strong-static languages compared to functional-dynamic-strong languages. This research focused on classifying bugs based on their type as opposed to our investigation, where we focused specifically on the distribution of hotfixes across programming languages.\par
-
-In \cite{Phipps1999}, Java and C++ were evaluated by comparing bug rates. In this case, there were two definitions for bugs - a defect and a bug itself. A defect included issues such as syntax errors, logical errors and changes in variable name. A bug itself was only defined to be a problem detected during testing or deployment. The mean number of defects and bugs, averaged over a number of projects, was compared between both languages per 1000 lines of code. The scientists also compared observed defects and bugs per hour as well as the time taken to fix defects in both languages. Productivity was also measured by analysing number of lines written per second.\par
-
-There were researchers that used slightly different parameters to compare programming languages, these included program length, programming effort, run-time efficiency, memory consumption, and reliability \cite{Prechelt2000}.\par
-
-An interesting paper that we reviewed analysed memory usage and speed of execution of three different bioinformatics methods for six distinct programming languages \cite{Fourment2008}. This was especially pertinent as bioinformatics applications have huge datasets and computational time taken is not trivial, hence optimising speed is desirable.\par
-
-Another group of authors compared 8 different languages by conciseness, size of executables, running time, memory usage and failure proneness \cite{Nanz2015}. They argued that conciseness is an important factor as a more compact language can help write a program with fewer bugs.
 
 
 \section{Empirical Study}
