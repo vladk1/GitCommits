@@ -21,6 +21,9 @@
 \usepackage{blindtext, graphicx}
 \usepackage{fancyhdr} 
 \usepackage{txfonts}
+\usepackage{lipsum}
+\usepackage{booktabs}
+
 \graphicspath{ {images/} }
 
 \newcommand\FIXME[1]{\textbf{FIXME: #1}}
@@ -62,10 +65,11 @@
 \title{Investigating Fault-Proneness Through Hotfix Commits:\\A Research in the Light of Different Programming Languages}
 \numberofauthors{4}
 \author{
-	Martin Lazarov, Ismaa'eel Ataullah, Vladyslav Kolesnyk, Veselin Pavlov\\
-	\affaddr{University College London}\\
-	\affaddr{London, UK}
+  Martin Lazarov, Ismaa'eel Ataullah, Vladyslav Kolesnyk, Veselin Pavlov\\
+  \affaddr{University College London}\\
+  \affaddr{London, UK}
 }
+
 
 %\title{Investigating Fault-Proneness Through Hotfix Commits: A Research in the Light of Different Programming Languages}
 
@@ -103,14 +107,26 @@ Choosing the most suitable tools and programming languages is a very challenging
 %\end{IEEEkeywords}
 
 \section{Introduction}
-Planning and resource allocation are arguably the most crucial components of any software project. Our research was motivated by the fact that very often, in the planning phase project managers neglect the importance of hotfixes – which becomes essential once a project is deployed. The most common reason for that practice is the fact that hotfixes are not constant and their presence is difficult for prediction. As a result, it is quite challenging to estimate their quantity and incorporate them into the cost of the project.  Our research attempts to provide this crucial information by correlating hotfixes with the choice of language to develop software in a specific area. As there are no clear definitions that specify what a hotfix is, according to our research and observations from the open-source projects, a hotfix can be defined as: ``a corrective commit deployed within 1 day, following a project's version update to fix critical issues in the release''.\par
+Planning and resource allocation are arguably the most crucial components of any software project. Our research was motivated by the fact that very often, in the planning phase project managers neglect the importance of hotfixes - which becomes essential once a project is deployed.
+
+Generally, a hotfix is related to correcting a critical problem which prevents a particular software product from performing as expected. This could mean a total or partial loss of service, a major security breach that has to be patched instantly, etc. As a result, such a fix is done outside of normal development and testing procedures. This characteristic of hotfixes implies that rapid development under urgent circumstances is usually required. Therefore, it can be often the case that lots of additional people and resources need to be allocated quickly for the correction, which leads to a significant increase in the cost of the overall product.
+
+Another aspect that makes hotfixes so important is their unpredictability which further prevents teams from planning in advance for such corrections into their development cycle. Moreover, hotfixes are sometimes delayed on purpose because people are afraid of the risk of applying the fix. All of these factors contribute to increasing the uncertainty and stress in managers and that can prevent them from taking the most appropriate action when a problem in production has to be resolved promptly.
+
+As there are no clear definitions that specify what a hotfix is, according to our research and observations from the open-source projects, a hotfix can be defined as: ``a corrective commit deployed within 1 day, following a project's version update to fix critical issues in the release''.\par
+
+With our research we aim to help project managers and developers make a more informed decision when deciding what languages to use by comparing the number of hotfixes per programming language. To provide a better picture we also look at hotfixes per specific software topics. 
+
 We believe that the results from our research can provide insights into the average number of issues per project with a focus on different programming topics and the relevant languages used. Consequently, project managers will be able to make a more informed decision with regard to the most appropriate programming languages they could use to try to achieve a minimum number of problems in production. This will improve software engineering practices and the overall project planning activity. Furthermore, it will help optimise the allocation of resources.
 The contributions of this paper are:
 
 \begin{itemize}
   \item parameters to determine most probable hotfix commits in the repository.
   \item a quantitative analysis identifying fault-proneness of specific programming topics and the relevant distribution of faults across programming languages.
-  \item an investigation into the following relationships between languages: strongly-typed vs weakly-typed, static vs dynamic and functional vs procedural to try to determine what group of languages is the most reliable.
+  \item an evaluation of the most used languages used across the top 16 most popular domains identified by SourceForge 13'.
+  \item an investigation into the languages that achieve the highest/lowest ratios of hotfix per version update.
+  \item research into the programming topics that experience the highest/lowest numbers of hotfix per version increase.
+  \item an investigation into the following relationships between languages: strongly-typed vs weakly-typed, static vs dynamic and scripting vs procedural to try to determine what group of languages is the most reliable.
   \item a foundation for future research in the area of identifying language-specific hotfixes.
 \end{itemize}
 \par
@@ -152,168 +168,104 @@ In \cite{Phipps1999}, Java and C++ were evaluated by comparing bug rates. In thi
 
 There were researchers that used slightly different parameters to compare programming languages, these included program length, programming effort, run-time efficiency, memory consumption, and reliability \cite{Prechelt2000}.\par
 
-An interesting paper that we reviewed analysed memory usage and speed of execution of three different bioinformatics methods for six distinct programming languages \cite{Nanz2015}. This was especially pertinent as bioinformatics applications have huge datasets and computational time taken is not trivial, hence optimising speed is desirable.\par
+An interesting paper that we reviewed analysed memory usage and speed of execution of three different bioinformatics methods for six distinct programming languages \cite{Fourment2008}. This was especially pertinent as bioinformatics applications have huge datasets and computational time taken is not trivial, hence optimising speed is desirable.\par
 
-Another group of authors compared 8 different languages by conciseness, size of executables, running time, memory usage and failure proneness \cite{Dyer-Nguyen-Rajan-Nguyen-13} \FIXME{IS IT BOA's PAPER HERE?}. They argued that conciseness is an important factor as a more compact language can help write a program with fewer bugs.
+Another group of authors compared 8 different languages by conciseness, size of executables, running time, memory usage and failure proneness \cite{Nanz2015}. They argued that conciseness is an important factor as a more compact language can help write a program with fewer bugs.
 
 
 \section{Solution}
-Our hypothesis was motivated by research paper \cite{Ray2014}. In it the authors compared the number of bug commits to the total number of commits across 17 languages and 850 different projects.\par
 
-We were interested in investigating whether their findings applied when comparing number of hotfixes to total number of commits and if those conclusions were still relevant when we divided our project sources into various topics.\par
+% \begin{table}
+% \centering
+% \resizebox{\columnwidth}{!}{%
+% \begin{tabular}{r|lll}
+% \multicolumn{1}{r}{}
+% & \multicolumn{1}{l}{Heading 1}
+% & \multicolumn{1}{l}{Heading 2}
+% & \multicolumn{1}{l}{Heading 3} \\ \cline{2-4}
+% Row 1 & Cell 1,1 & Cell 1,2 & Cell 1,3 \\
+% Row 2 & Cell 2,1 & Cell 2,2 & Cell 2,3
+% \end{tabular}%
+% }
+% \end{table}
 
-More specifically we wanted to see whether:
-\begin{enumerate}
-\item \textbf{Strongly-typed languages required fewer hotfixes than weakly-typed languages.}
-\item \textbf{Statically-typed languages required fewer hotfixes than dynamically-typed languages.}
-\item \textbf{Functional languages required fewer hotfixes than procedural ones.}
-\end{enumerate}
-\par
-In order to evaluate our hypothesis, we developed a tool in Boa \cite{Dyer-Nguyen-Rajan-Nguyen-13} that would allow us to incorporate our ideas and perform an analysis to verify them. Next, we present our reasoning and what factors we considered to accomplish our research.\par
 
-To calculate the frequency of hotfixes for various projects and topics, we had to design a way of distinguishing a hotfix based on the commit messages. Based on the definition of a hotfix, we focused on discovering corrective commits that were submitted quickly after a new version release. In this way, we were hoping to identify problems specifically related to the version update. Therefore, we decided to divide our implementation into: detecting a \textbf{version bump commit} (i.e. a commit indicating a version increase) and identifying subsequent \textbf{bug fix commits}.\par
 
-Unfortunately, no prior projects implemented a technique to detect version bump commits. However, from the observed data it turned out to be quite straightforward to extract this information by generating a regular expression to match strings like: ``bump'', ``version'', ``update'' in an appropriate order.\par
+\begin{table*}[!htbp]
+  \centering
+  \begin{tabular}{cccccccccccccccccc}
+    Language &
+    \rotatebox{90}{Databases} & \rotatebox{90}{Systems Administration} & 
+    \rotatebox{90}{Dynamic Content} & 
+    \rotatebox{90}{Front Ends} & 
+    \rotatebox{90}{Site Management} & 
+    \rotatebox{90}{Role Playing} & \rotatebox{90}{Games} & \rotatebox{90}{Security} &
+    \rotatebox{90}{Internet} & \rotatebox{90}{Software Development} & 
+    \rotatebox{90}{Testing} & 
+    \rotatebox{90}{Build Tools} & 
+    \rotatebox{90}{Code Generators}&
+    \rotatebox{90}{Communications} & \rotatebox{90}{Education} & \rotatebox{90}{Frameworks} &
+    \rotatebox{90}{Total Average} \\
+    \midrule
+    Java & 0.25 & 0.15 & 0.22 & 0.08 & 0.28 & 0.32 & 0.07 & 0.22 & 0.38 & 0.17 & 0.23 & 0.10 & 0.06 & 0.09 & 0.10 & 0.09 & \textbf{0.176} \\
+    Javascript & 0.26 & - & 0.27 & - & 0.17 & - & 0.17 & 0.23 & - & - & - & - & - & - & 0.18 & 0.18 & \textbf{0.209} \\
+    Perl & 0.17 & 0.05 & 0.22 & 0.44 & - & 0.41 & - & 0.06 & 0.13&0.24&-&-&-&0.17&0.19&0.32 & \textbf{0.218} \\
+    PHP & 0.27&0.23&0.27&0.28&0.24&-&-&0.23&0.10&0.38&-&-&0.14&-&0.67&0.31&\textbf{0.282} \\
+    C++ &0.24&0.12&0.26&0.06&-&0.51&0.35&0.31&0.20&0.26&0.27&0.35&0.73&0.08&0.12&0.43 & \textbf{0.286} \\ 
+    C &0.29&0.24&0.29&0.33&0.43&0.56&0.39&0.05&0.03&0.34&0.27&0.33&0.73&0.07&0.23& - & \textbf{0.305}\\
+    C\# & -&0.20&-&-&0.30&0.89&0.14&0.27&0.60& 0.08 & - & 0.07 & - & 0.57 & - & 0.27 & \textbf{0.339} \\
+    \bottomrule
+    Total Average & 0.25&0.17&0.28&0.28&0.28&0.47&0.33&0.17&0.12&0.32&0.27&0.34&0.53&0.11&0.27&0.32
+  \end{tabular}
+  \caption{Blabla}
+  \label{tab:1}
+\end{table*}
 
-From our Related Work, we found projects \cite{Hattori2008,Ratzinger2008,Hindle2008}, which distinguished bug fix commits only based on the commit messages. However, due to the similarity between commit messages for normal bug fixes and hotfix commits, and occasionally the large sequences of text, it was challenging to use the same approach. Therefore, in addition to bug fix commit detection, we applied some other parameters to ensure that it is not just a regular fix, but a hotfix. As previously discussed, we used a regular expression which examined commit messages for words associated with a corrective commit (e.g. ``bug'', ``fix'', ``issue'', ``error'', ``broke'', etc.) to detect all bug fix commits. Next, we considered other possibilities that would let us detect hotfixes in a more reliable way. Some of the papers we discussed in Related Work \cite{Hattori2008,Mockus2000,Hindle2008,Kolassa2013} incorporated metadata, such as: the size of changes (the number of files that were altered) and the time of the commit (how long it took for a patch to be submitted) to identify bug fixes. We considered these options for our purposes as well. Consequently, in order to increase our confidence level that the current fix commit is an actual hotfix, we introduced the following parameters to verify the emergency of the fix:
-\begin{itemize}
-  \item \textbf{Time} - commits have to be submitted within 1 day from the version bump commit
-  \item \textbf{Look-ahead} range for commits - only n numbers of commits should be considered after version bump
-\end{itemize}
 
-\par
-The size of the commit (i.e. Number of files changed ) could have been used as another parameter to determine hotfixes as our investigation discovered that corrective type of changes generally affect few files (e.g. revert new alterations or switch off a problematic feature). However, based on our results, we found examples where lots of changes were merged into one commit. Consequently, several hotfixes may be submitted as part of a single merge commit, hence affecting many files. In such case, we would fail to account for these hotfix commits because of the large number of files involved in the fix.\par
+Our work was inspired by the previous research paper \cite{Ray2014}, where authors compared the number of bug commits to the total number of commits across 17 languages and 850 different projects. Our contribution primarily involved investigation of the fault-proneness of different languages based on the newly defined criteria - hotfixes per version update. Our dataset consist from [totalnumberofprojects] projects, selected from the top 19 most popular project types in the SourceForge dataset.
+That allows us to differentiate results for the different kinds of projects.\par
+Specifically, our investigation aimed to evaluate the following research questions:
 
-The reason why we decided to put a limit and investigate commits only within 1 day after a release was because of the nature of hotfixes. Whenever a live product contains a critical fault, it tends to be identified quickly as key functionalities stop working. Therefore, leaving bugs in production amplify the risk of the system being unusable. As a result, such hotfixes are assigned the highest priority and have to be performed rapidly even outside of the normal development process.\par
+\textbf{1) What languages are the most widely used across the top 16 most popular categories?} (as identified by SourceForge13 Dataset) 
 
-Furthermore, it is very likely that fixes performed on the first day after a new release will refer to problems occurring before the version increase (or at latest to commits submitted on that day). Therefore, we decided to focus on the Look-ahead to investigate the first n commits after a version update. We focused on the first 15 commits as anything after this point would increase the probability that a fix is related to code added after the release rather than before that. To provide more fine-grained results, we looked at the initial 5, 10 and 15 commits separately.\par
+Research on the most widely used languages across the top 16 most popular categories showed that there are surprisingly few such languages. We identified only 6 widely used languages: C\#, Perl, Python, C, C++ and PHP. The criteria of choosing the languages is based on whether the language was present in at least one half of the categories. One would expect Javascript to appear in the list. However, it is present only in 7 categories which is less than 50\% of the categories. This may be due to the fact that Javascript is mainly used for website development. The two most widely used languages from the list are C and C++ which are present in 15 out of 16 categories. While C++ is not present in site management, C is not present in frameworks. The rest of the languages in the list are present on average in 10 categories. Overall, the majority of these languages were not present in testing, code generators and site management categories. The observations made are reasonable since using these languages in such categories is very uncommon.
 
-With regard to evaluating the most optimal Look-ahead value, we decided to count the number of Forward Engineering commits as well (i.e. commits that introduce new features). We did this because we were interested in identifying the largest fix commits/forward commits ratio. This would allow us to guarantee that lower number of new features were introduced into the code and consequently that some of the higher number of fixes refer to the previous version.\par
+\textbf{2) What categories achieve the highest/lowest number of hotfixes per version update?}
+    
+In this section we investigate which categories achieve the highest or lowest numbers of hotfixes per version update. We proceed to analyse why certain categories might have low numbers of hotfixes and why others might require higher numbers of hotfixes.
 
-Based on our research and the experiments we ran, we managed to identify the most optimal parameters (i.e. \textbf{time}: within 1 day after a release and \textbf{look-ahead}: the first 10 commits - \textit{see Table 1 in Appendix}). Having accomplished that, we focused on selecting a dataset. We decided to analyse SourceForge 2013 because it provided categorisation of projects into programming topics (e.g. code related to: ``databases'', ``software development'', ``security'', etc.). Unfortunately, Github did not possess such classification. We believed that being able to sort projects based on topics would produce greater insights and more useful information for developers, as they would be more interested in language efficiency for particular software development area.\par
+If we look at the average number of hotfixes per category we see that the Internet, Security, communications and systems administration have the lowest average number of hot fixes per update out of the entire group of categories. 
 
-From all the available projects, we only concentrated on the ones that had incorporated versioning (i.e. containing bump commits). Our argument was that only if there were version updates which we could detect, we would be able to perform a hotfix analysis. Therefore, we extracted all the projects that had incorporated bump commits and applied our parameters to try to recognise the hotfixes. Consequently, for each programming language we analysed the number of hotfix and bump commits so that we would be able to 
-\begin{enumerate}
-\item \textbf{Strongly-typed languages required fewer hotfixes than weakly-typed languages.}
-\item \textbf{Statically-typed languages required fewer hotfixes than dynamically-typed languages.}
-\item \textbf{Functional languages required fewer hotfixes than procedural ones.}
-\end{enumerate}
+The categories with the highest average numbers of hotfixes per version update are Code Generation and Role playing which have 0.53 and 0.47 average hot fixes per update respectively. Both these values are much higher than the next highest (0.34) So we will only consider these two.
 
-\subsection{Overall performance of programming languages}
-We started with investigating the overall reliability of different languages regardless of the topic they belonged to.\\
-\begin{figure}
-\centering
-\includegraphics[width=0.5\textwidth]{Bar_chart}
-\caption{Overall hotfixes per programming languages for 100 releases.}
-\label{fig:my_label}
-\end{figure}
+With regards to those with lower average hot fixes per update it is easy to see why. Applications under the categories as Security, Internet, Communications and systems administration are all information critical i.e. they have critical assets that need to be protected in order to maintain customer trust and keep the reputation of the creator intact. For example with communications applications it is vital that security is implemented in such a way that an adversary cannot intercept or obtain messages only intended for the receiver. This means that applications that fall under such categories should be extensively tested before deployment reducing the chance of a hot fix being needed after deployment.
 
-\par
-By performing a general analysis on all languages regardless of their topic, we compared the ratios of hotfix commit/release based on the available data. According to our results, Scala is the most reliable programming language with only 6.8 hotfixes per 100 releases ( \textit{see Table 1 in Appendix for more details}). On the other hand, Matlab is the worst performing language with 37.93 hot corrections per 100 version updates.\\
+If we look further into the results we can see that for example the usage of C in Internet and security categories has an incredibly low hot fix average (0.03 and 0.05 respectively). This could be down to fully comprehensive testing techniques, but could also be attributed to the fact that within those categories, the language has been used for an extensive period and hence there is a lot of experience with a variety of different bugs, meaning they are less likely to occur during development as experienced programmers are less likely to make those particular mistakes in the first place. This could also be the reason the projects written in Perl have a very low hot fix average for all four categories.
 
-\textbf{Hypothesis 1}:\par
-The strongly-typed languages we considered were: C\#, Java, Python, Scala.\par
-The weakly-typed languages we identified were: C, C++, Objective C, Perl, Javascript, PHP.\par
+When considering why role playing applications have a high average number of hot fixes we need to try and speculate as to why the hot fix rate was so much higher than that of projects that fall under the games category. It is possible that the games category is a general category are a lot simpler than those that fall under the role playing category which is why bugs might be more prominent as a result of increased complexity of the game. If we look a little closer at the results for the role playing category it becomes clear that for all languages there is a high average number of hot fixes per update which supports our theory.
 
-First, Scala performs better than all weakly-typed languages. However, C\#, Java and Python do not support the hypothesis and do not outperform all weakly-typed languages. Moreover, all of them have a higher hotfix per version bump ratio than Objective C. Therefore, based on our results, we can state that it is often the case that a strongly-typed language \textbf{does not} have fewer hotfixes than a weakly-typed language and our analysis is inconclusive on this matter.\\
+If we look at Code generators on the other hand we see that for two languages (C and C++) the hot fix average is very high and for two other languages (PHP and Java) it is very low. It is not easy to conclude why this might be the case, however one can speculate that PHP and Java are established languages for writing code generators and due to this engender low hot fix averages. C and C++ might share syntactic details and semantic structure that would result in a similar hot fix average between them.
 
-\textbf{Hypothesis 2}:\par
-Static languages considered: C, C++, Objective C, Java, Scala.\par
-Dynamic languages identified: Python, Perl, PHP, Javascript.\par
+\textbf{3) What languages achieve the highest/lowest number of hotfixes per version update?}
 
-C performs better than all dynamic languages apart from Perl. 
-C++ is only more reliable than PHP. In all other cases, C++ contains more hotfixes than the other dynamically-typed languages. 
-Objective C is a very strong static candidate and is more reliable than all dynamic languages. Java performs slightly worse, but it still has overall dominance over the dynamically-typed languages. It has more amount of hotfixes per release only when compared with Perl. However, in the other cases, it is more efficient than all languages from the second group. Scala, as shown already is the best performer throughout all languages. Therefore, it is more reliable than all dynamic ones. From this analysis, we could say that in most of the cases, the second part of our hypothesis \textbf{is supported} by the results we obtained.\\
+Language comparison based on the average hotfix ratio over all topics has shown that Java has appeared to have the least number of hotfixes per version update (0.18). Javascript (0.21) and Perl (0.22) were found to perform slightly worse with the hotfix ratio value being just around 3-4\% higher. However, all the mentioned languages showed marginally better results with 8\% difference comparing to other common languages taken under analysis - PHP(0.28), C++(0.29), Python(0.30), C(0.31) and C\#(0.34). 
 
-\textbf{Hypothesis 3}:\par
-Unfortunately, from the languages that we were able to collect information about, only Scala is a member of the functional programming languages. As mentioned already Scala is the best performer amongst all evaluated languages, and as such will undoubtedly have less hotfixes than all the procedural languages (e.g. C, C++,C\#, Objective C, Java ). Thus, based purely on our results, the third part of our hypothesis agrees with the data that we collected.\par
+\textbf{4) Are there any patterns based on the type of the programming language?}
 
-Overall, our hypothesis agreed with the results we obtained apart from a small number of cases. However, we expect that this may be due to the different amount of releases and hotfixes identified per language. We could also conclude that Functional-Static-Strong languages are better than Procedural-Dynamic-Weak ones. Therefore, we could also argue that by using combinations of the former type of languages, developers will be able to guarantee the lowest amount of hotfixes per release. As a result, the effort needed for maintenance will be reduced and software quality will be improved.
+The fourth research question that we decided to investigate was related to comparing the type of each programming language. The classification was inspired by Ray et al. [14], where languages were compared based on the number of bug fixes in each language and were divided into three main Classes. The first class was named ‘Programming Paradigm’ and it split languages into the following categories: Procedural, Functional, Scripting. The second criteria was Compilation Class, which yielded these types: Static and Dynamic. The final one, Type Class, separated languages into: Strongly-typed and weakly-typed.
 
-\subsection{Topic: Databases}
-We take into account reliability as we want to reach reasonable scientific conclusions based on our findings. Unfortunately, we experience limitations within the data. For example, there are languages where we have identified only 2 or 3 bump commits. Deriving results from such a small dataset is extremely unreliable and it is not likely we can reach accurate solutions with them, hence we exclude them as outliers. These languages are Zope and C\# 1.0.\par
-We can see from our results that C has the lowest number of hotfix to bump commit ratio, suggesting that C is the most reliable language to program in, closely followed by Python. C++, PHP and Javascript have similar reliability according to our results but are less stable when compared to Perl or Python. Given the large number of bump commits for C++, PHP and Javascript, we can assume these results are reliable.\par
-Our hypothesis had three aspects to it and we will analyse whether our results support all of them.\\
+According to the results that were achieved in the study [14], strongly-typed languages experienced fewer bug fixes than weakly-typed. Static programming languages required fewer corrective commits than dynamic ones. And finally, functional languages encountered fewer bug fixes than procedural ones.
 
-\textbf{Hypothesis 1}:\par
-The strongly typed languages we consider are: Java, Python.\par
-The weakly typed languages we consider are: C, C++, Perl, PHP, Javascript.\par
-In this case we have a mixed series of results which suggest that this part of our hypothesis may not be entirely correct. Although Python is ranked as the second most reliable language, it is topped by C, which is a weakly-typed language. If Java had been placed third,  the hypothesis would have been better supported as we could have then treated C as an outlier. However, this is not the case. Above Java is another weakly-typed language, namely Perl. In conclusion, when considering database-specific projects, we cannot say that Strongly-typed languages required fewer hotfixes when compared to weakly-typed ones.\\
+Due to the fact that we selected to evaluate languages that appeared in at least 50% of the selected categories, we discovered only 6 languages and none of them was functional. Most probably this was due to the fact that functional languages are limited to specific use cases and as such are not widely popular across different domains. Consequently, we evaluated the relationship between Procedural and Scripting languages instead of Procedural against Functional.
 
-\textbf{Hypothesis 2}:\par
-The statically-typed languages we consider are: C, Java, C++.\par
-The dynamically-typed languages we consider are: Javascript, Python, Perl, PHP.\par
+Analysing the first language relationship - Procedural (Java, C, C\#, C++) vs Scripting (Perl, Python, PHP), we were not able to detect any patterns across the categories. The reason was that the number of languages was too low to make any firm conclusions. It was always the case that at least one of the languages would not follow a pattern or the comparison would consider only one language from a certain category.
 
-Again we have a mixed list of results. C is top and this would suggest that statically-typed languages indeed do require fewer hotfixes when compared to dynamically-typed languages. However, the other static languages, Java and C++, are in the bottom half of the table in terms of reliability. Once again, we cannot say that this part of our hypothesis is supported when comparing languages used for developing database-specific programmes.\\
+Evaluating the second relationship between Static (Java, C, C\#, C++) and Dynamic (Perl, Python, PHP) languages led to the same conclusions. The reason was because the languages in these two categories coincided with the languages in the first two classes (Procedural and Scripting).
 
-\textbf{Hypothesis 3}:\par
-We cannot compare this aspect of the hypothesis as no languages in this set of results are classified as Functional languages.\par
-\textbf{In conclusion},no elements of our hypotheses were supported by our results. In two cases, our observations were not definitive and in the other we did not have the required results to make a comparison. We can conclude that our hypothesis is not supported when considering languages used for developing  database-related projects.
+The third aspect that we investigated referred to comparing strongly-typed (Java, C\#, Perl, Python) and weakly-typed (C, C++, PHP) languages. Similarly to the first language relationship, we encountered that there was no clear pattern across the categories. Furthemore, we found the same problem of having comparisons against against only one member of a language class. Solely in the Communications category, we were able to detect some pattern, where weakly typed languages performed better. However, there were only two languages labelled as weak. Therefore, we cannot reach any satisfying conclusions based on this finding.
 
-\subsection{Topic: Games}
-In order to only analyse those results we deem reliable, we will exclude C\#, Javascript and Objective C on the basis that the number of bump commits analysed for them were too low.\par
 
-We can see from our results that for programming games, Java seems to be the most reliable language to use. C is second; however, it is somewhat behind, with 24.6\% of all commits being hotfix commits. C and C++ are very similar and are only separated by 0.1\%. In last place is Python which has a hotfix rate of almost 30\% and according to our results is the least reliable language to use.\\
-
-\textbf{Hypothesis 1}:\par
-The strongly-typed languages we consider are: Java, Python.\par
-The weakly-typed languages we consider are: C, C++.\par
-
-Java is the most reliable language by far according to our results. C, C++ and Python have quite similar hotfix rates. Java is a strongly-typed language which has a definitive advantage over the others. Thus, we can say this aspect of our hypothesis is somewhat supported. It's only partially justified because while Python, C and C++ have similar hotfix rates, Python still ranks at the bottom of our results table.\\
-
-\textbf{Hypothesis 2}:\par
-
-The statically-typed languages we consider are: C, Java, C++.\par
-The dynamically-typed languages we consider are: Python.\par
-
-This aspect of the hypothesis is categorically supported by our results, all statically-typed languages are ranked higher than the dynamically-typed Python in our results. We can therefore conclude that static languages required fewer hotfixes when compared to dynamic languages and hence the latter are less reliable when programming games.\\
-
-\textbf{Hypothesis 3}:\par
-We cannot compare this aspect of the hypothesis as no languages in this set of results are classed as Functional languages.\par
-
-\textbf{In conclusion}, we can state that our overall hypothesis is somewhat supported with regard to projects labeled as Games.
-
-\subsection{Topic: Front-ends}
-Here we can see a huge difference in numbers of bump commits detected in various projects. Thus, we can argue that not many projects were observed to have a Front-end label for sufficient analysis. And many other popular Front-end languages (e.g. Javascript, C\#) were not identified.\par
-Hence, after removing languages with a small number of detected projects, we ended up with \textbf{Scala} and \textbf{Java}, where the former has a slightly smaller hotfixes per bump ratio.\\
-
-\textbf{Hypothesis 1}:\par
-Both Scala and Java are considered to be strongly-typed; thus, no comparison can be made within the filtered languages. 
-Regarding all the languages, we can observe that Java and Scala, overall, have more reliable statistics than weakly-typed (PHP, C, Perl), hence the hypothesis is \textbf{satisfied}.\\
-
-\textbf{Hypothesis 2}:\par
-Both Scala and Java are classified as statically-typed; therefore, no comparison can be made within the filtered languages. In terms of all the languages in the list, we can observe that most of the static ones (C++, Scala and Java) are more reliable than dynamic languages (PHP, Perl), hence the hypothesis is \textbf{satisfied}.\\
-
-\textbf{Hypothesis 3}:\par
-From the set of languages, only Scala is considered to be functional and it indeed performed better than all the others, therefore the hypothesis is \textbf{satisfied}.
-
-\subsection{Topic: Software Development}
-We filtered languages that had insignificant number of projects under the Software Development label and ended up analysing: Java, C++, Python and C languages. It turns out Java appeared to be the most stable language, where on average for 10 version updates, only 1 hotfix would be detected.\\
-
-\textbf{Hypothesis 1}:\par
-There was no enough evidence to suggest that \textbf{all} strongly-typed languages (Java, Python) performed better than the weakly-typed ones (C++, C) within the Software Development topic. For example, Python(22.22\%) has more hotfixes than C++ (19.05\%). However, the average ratio for strongly-typed languages (16.5\%) is lower than the average ratio for weakly-typed (21.63\%). Thus, we can conclude that the hypothesis is \textbf{satisfied} in general.\\
-
-\textbf{Hypothesis 2}:\par
-Not all static languages would satisfy the hypothesis, as for example, Python as a dynamic language outperforms C (defined as a statically-typed language). However, by considering the average ratio of filtered languages, we can see that static languages (Java, C++, C - 19.1\%) by far outweigh the dynamic language Python - 22.2\%.Hence, the hypothesis is \textbf{satisfied}, however \textbf{dynamic languages are not represented} well in the dataset.\\
-
-\textbf{Hypothesis 3}:\par
-No functional languages were presented in dataset. Therefore, we cannot provide any conclusive argument with regard to the third component of our hypothesis.
-
-\subsection{Topic: Security}
-Due to the low number of releases per language that we were able to identify, we cannot guarantee that the results we collected would hold in general. However, in order to be able to perform some analysis on the data and reach somewhat valid results, we decided to exclude only the outlier languages  (i.e. the ones containing the lowest number of version updates). Thus, we decided to eliminate C\# and Python from the list of evaluated languages.\par
-
-According to our filtered data, the best performing language is C with just 1 hotfix per 20 releases on average. On the other hand, the least reliable one is C++ as it requires a hotfix for approximately every 6.5 releases.\\
-
-\textbf{Hypothesis 1}:\par
-The analysis of our results reveals that strongly-typed languages (Java) do not perform better in comparison with weakly-typed languages (C, C++, Javascript, Perl, PHP). In fact, Java only outperforms C++, but in all other cases, it requires more hotfixes than the remaining weakly-typed languages (C, Javascript, Perl, PHP). Therefore, the first part of our hypothesis does not hold for projects related to Security.\\
-
-\textbf{Hypothesis 2}:\par
-Our observations were inconclusive on whether static languages (C, C++, Java) are more reliable than dynamic ones (Javascript, Perl, PHP). Based on our results, C performed better than all dynamically-typed languages. However, Java and C++ both required more hotfixes per version update than all dynamic languages. Therefore, our analysis cannot provide a convincing argument whether static languages are more reliable than dynamic ones. As a result, the second part of our hypothesis is inconclusive on this matter.\\
-
-\textbf{Hypothesis 3}:\par
-Unfortunately, from the results that we obtained, we could not find any functional languages to compare them to procedural ones (C, C++, Java).
-Consequently, regarding the languages used in Security related projects, we are not capable of deriving any conclusions about the required number of hotfixes whatsoever. Thus, there is no argument to support or disprove the third element of our hypothesis.\par
-Overall, due to the insufficient number of releases in our data, we were not able to state conclusively whether our hypothesis is supported or not. Although there were examples of disproving it, we believe that having information about a larger amount of releases may actually reveal results closer to the overall observations.
+Overall, we could not identify any convincing patterns based on the class comparison between languages mostly due to the low number of extracted programming languages.
 
 \subsection{Limitations.}
 There were several limitations that we encountered throughout our research:
@@ -322,13 +274,17 @@ There were several limitations that we encountered throughout our research:
   \item we could not extract hotfix branches, only the overall commits on the trunk were available and thus we used our own parameters to try to distinguish hotfix commits. Therefore, we may have introduced some false positives or failed to account for actual hotfixes.
   \item the way we detected bump commits was by writing a regular expression to match words like:  ``bump'', ``version'', ``update'' in an appropriate order. Thus, we may have excluded version updates had they been indicated differently. 
   \item most open source projects are not under the stress of releasing as opposed to commercial projects. Consequently, they do not release very often and/or do not support versioning.
+  \item a limited number of programming topics was used (16 in total), which did not allow us to observe distinguishable patterns.
+  \item a low amount of languages satisfied our predicate (being present in at least one half of all evaluated topics), which did not allow us to state any conclusive results.
   \item only one dataset was used to evaluate our hypothesis - SourceForge 2013.
 \end{itemize}
 
 \section{Conclusions and Future Work}
-We have presented a research in detecting the fault-proneness of programming languages through hotfix commits - a topic that has not been investigated so far. To increase the significance of our study we performed both an overall estimation of hotfixes and a topic-specific analysis. The tool that we created was written in Boa and mined repositories from SourceForge 2013's dataset. Our goal was to verify whether the general relationships between languages' reliability holds with regard to hotfixes. Specifically, we investigated the following relations: strongly-typed vs weakly-typed languages, static vs dynamic and functional vs procedural. We expected that in each pair the first group of languages will be dominant. Although our overall results supported our hypothesis, on a topic-by-topic basis we were not able to verify it.\par
-Therefore, we believe that some future work has to be accomplished to increase the validity of our observations. In particular, more datasets could be used, including Github (provided that projects are categorised into topics). Further improvements may be done to identify bump commits more accurately. Recently, a few commercial projects have been open-sourced and as a result, we could use them to enhance the quality of our data. In such projects, releases will have occurred more frequently and thus, there is a higher probability of identifying more hotfixes.\par
+We have presented a study in detecting the fault-proneness of programming languages through hotfix commits - a topic that has not been investigated so far. As part of our research we performed a topic-specific analysis across 16 programming domains to detect the most popular languages used in the evaluated  projects. We investigated languages and topics that achieved highest/lowest ratios of hotfix per version update and tried to identify patterns based on the language classification. The tool that we created was written in Boa and mined repositories from SourceForge 2013's dataset. Our goal was to verify whether the general relationships between languages' reliability holds with regard to hotfixes.  
+Our results identified 6 languages as being the most widely used across different domains - C\#, Perl, Python, C, C++ and PHP. We discovered that Java achieves the least number of hotfixes per version update (0.18), while C\# requiring most amount of hotfixes per version increase (0.34). From the different domains, we recognized: Security, Internet and Communications as being the most reliable (i.e. requiring least amount of hotfixes per version update) while Role Playing and Code Generation required highest number of corrections. Regarding the comparison between language classes, we were not able to identify any conclusive patterns.\par
+There are few aspects that could be improved as Future Work. In particular, more datasets could be used, including Github (provided that projects are categorised into topics). Further improvements may be done to identify bump commits more accurately. Recently, a few commercial projects have been open-sourced and as a result, we could use them to enhance the quality of our data. In such projects, releases will have occurred more frequently and thus, there is a higher probability of identifying more hotfixes.\par
 Finally, we believe that our paper provides a good foundation for future research to be done in this topic. We expect that the results we obtained will help developers and project managers improve their planning and understand what the most appropriate languages are for their specific topic.
+
 
 \bibliographystyle{abbrv}
 \bibliography{hotfixes} 
