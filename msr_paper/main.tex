@@ -207,7 +207,7 @@ The SourceForge13 Dataset is selected for this study. It consists of \FIXME{[tot
 \begin{table*}[!htbp]
 	\centering
 	\small
-	\begin{tabular}{c c c c r r r r r r r r r r r r r r r r r}
+	\begin{tabular}{l c c c r r r r r r r r r r r r r r r r r}
 		Language & $\mathcal{P}$ & $\mathcal{C}$ & $\mathcal{T}$ & 
 		\rotatebox{90}{Databases} & \rotatebox{90}{Systems Administration} & 
 		\rotatebox{90}{Dynamic Content} & 
@@ -219,33 +219,36 @@ The SourceForge13 Dataset is selected for this study. It consists of \FIXME{[tot
 		\rotatebox{90}{Build Tools} & 
 		\rotatebox{90}{Code Generators}&
 		\rotatebox{90}{Communications} & \rotatebox{90}{Education} & \rotatebox{90}{Frameworks} &
-		\rotatebox{90}{Total Average} \\
+		\rotatebox{90}{Average} \\
 		\hline
 		Java & P & S & S & 0.25 & 0.15 & 0.22 & 0.08 & 0.28 & 0.32 & 0.07 & 0.22 & 0.38 & 0.17 & 0.23 & 0.10 & 0.06 & 0.09 & 0.10 & 0.09 & \textbf{0.176} \\
-		Javascript  & & & & 0.26 & - & 0.27 & - & 0.17 & - & 0.17 & 0.23 & - & - & - & - & - & - & 0.18 & 0.18 & \textbf{0.209} \\
-		Perl  & & & & 0.17 & 0.05 & 0.22 & 0.44 & - & 0.41 & - & 0.06 & 0.13&0.24&-&-&-&0.17&0.19&0.32 & \textbf{0.218} \\
-		PHP  & & & & 0.27&0.23&0.27&0.28&0.24&-&-&0.23&0.10&0.38&-&-&0.14&-&0.67&0.31&\textbf{0.282} \\
-		C++  & & & & 0.24&0.12&0.26&0.06&-&0.51&0.35&0.31&0.20&0.26&0.27&0.35&0.73&0.08&0.12&0.43 & \textbf{0.286} \\ 
-		C  & & & & 0.29&0.24&0.29&0.33&0.43&0.56&0.39&0.05&0.03&0.34&0.27&0.33&0.73&0.07&0.23& - & \textbf{0.305}\\
-		C\#  & & & & -&0.20&-&-&0.30&0.89&0.14&0.27&0.60& 0.08 & - & 0.07 & - & 0.57 & - & 0.27 & \textbf{0.339} \\
+		C\#  & P & S & S & -&0.20&-&-&0.30&0.89&0.14&0.27&0.60& 0.08 & - & 0.07 & - & 0.57 & - & 0.27 & \textbf{0.339} \\
+	    C++  & P & S & W & 0.24&0.12&0.26&0.06&-&0.51&0.35&0.31&0.20&0.26&0.27&0.35&0.73&0.08&0.12&0.43 & \textbf{0.286} \\ 
+		C  & P & S & W & 0.29&0.24&0.29&0.33&0.43&0.56&0.39&0.05&0.03&0.34&0.27&0.33&0.73&0.07&0.23& - & \textbf{0.305}\\
+		PHP  & S & D & W & 0.27&0.23&0.27&0.28&0.24&-&-&0.23&0.10&0.38&-&-&0.14&-&0.67&0.31&\textbf{0.282} \\		
+		Perl  & S & D & S & 0.17 & 0.05 & 0.22 & 0.44 & - & 0.41 & - & 0.06 & 0.13&0.24&-&-&-&0.17&0.19&0.32 & \textbf{0.218} \\
+		Python	& S & D & S & 0.27	& 0.24	& 0.36	& -	& - & 0.40 & 0.42	& 0.13	& -	& 0.41	& -	& 0.33	& -	& 0.14	& 0.22	& 0.36	& \textbf{0.298} \\
+		JavaScript  & S & D & W & 0.26 & - & 0.27 & - & 0.17 & - & 0.17 & 0.23 & - & - & - & - & - & - & 0.18 & 0.18 & \textbf{0.209} \\
+	
 		\hline
-		Total Average & &  & & \textbf{0.25}&\textbf{0.17}&\textbf{0.28}&\textbf{0.28}&\textbf{0.28}&\textbf{0.47}&\textbf{0.33}&\textbf{0.17}&\textbf{0.12}&\textbf{0.32}&\textbf{0.27}&\textbf{0.34}&\textbf{0.53}&\textbf{0.11}&\textbf{0.27}&\textbf{0.32} \\
+		Average & &  & & \textbf{0.25}&\textbf{0.17}&\textbf{0.28}&\textbf{0.28}&\textbf{0.28}&\textbf{0.47}&\textbf{0.33}&\textbf{0.17}&\textbf{0.12}&\textbf{0.32}&\textbf{0.27}&\textbf{0.34}&\textbf{0.53}&\textbf{0.11}&\textbf{0.27}&\textbf{0.32} \\
 		\hline
 	\end{tabular}
-	\caption{Ration of hotfix per version update of 7 common languages and their 16 respective domains. $\mathcal{P}$ stands for Programming Paradigm class (F=Functional, P=Procedural). $\mathcal{C}$ is for Compilation class (S=Static, D=Dynamic), and $\mathcal{T}$ is for Type class (W=weak, S=Strong).}
+	\caption{Ration of hotfix per version update of 8 common languages and their 16 respective domains. $\mathcal{P}$, $\mathcal{C}$, and $\mathcal{T}$ represent the classes of the language. $\mathcal{P}$ stands for Programming Paradigm class (P=Procedural, S=Scripting). $\mathcal{C}$ is for Compilation class (S=Static, D=Dynamic), and $\mathcal{T}$ is for Type class (W=weakly-typed, S=Strongly-typed).}
 	\label{tab:1}
 \end{table*}
 
 \section{Results}
+We performed an empirical study on the SourceForge13 dataset aiming to find the answers for our 4 research questions. The findings of each research question is explained below.
 \subsection{RQ1: Language Popularity}
-Our investigation on the most widely used languages across the top 16 most popular categories revealed that there are surprisingly few such languages. We identified only 7 widely used languages: C\#, Perl, Python, C, C++ and PHP. The criteria of choosing the languages is based on whether the language presents in most of the categories. We found that there is a significant drop in the amount of occurrence after Javascript.  %One would expect Javascript to appear in the list. However, it is present only in 7 categories and hence is ignored from the list. This may be due to the fact that Javascript is mainly used only for website development while our 16 popular categories span over various aspects of software. 
+Our investigation on the most widely used languages across the top 16 most popular categories revealed that there are surprisingly few such languages. We identified only 8 widely used languages: Java, C, C++, Perl, Python, PHP, C\#, and JavaScript. The criteria of choosing the languages is based on whether the language presents in most of the categories. We found that there is a significant drop in the amount of occurrence after JavaScript.  %One would expect JavaScript to appear in the list. However, it is present only in 7 categories and hence is ignored from the list. This may be due to the fact that JavaScript is mainly used only for website development while our 16 popular categories span over various aspects of software. 
 
-From Table \ref{tab:1}, the two most widely used languages from the list are C and C++ which are present in 15 out of 16 categories. While C++ is not present in Site Management, C is not present in Frameworks. The rest of the languages in the list are present in 10 categories on average. However, it is interesting to note that the majority of these languages are not used in Testing, which contains only Java, C, and C++. Similarity, only a few languages appears in Code Generators and Site Management categories. The observations made are reasonable since using these languages in such categories is very uncommon.
+From Table \ref{tab:1}, \textbf{the most widely used languages from the list is Java which appears in all the 16 categories.} C, and C++ share the second place with occurrence in 15 out of 16 categories. While C++ is not present in Site Management, C is not present in Frameworks. The rest of the languages in the list are present in 10 categories on average. However, it is interesting to note that the majority of these languages are not used in Testing, which contains only Java, C, and C++. Similarity, only a few languages appears in Code Generators and Site Management categories. The observations made are reasonable since using these languages in such categories is very uncommon. \FIXME{Citation here?}
 
 \subsection{RQ2: Hotfixes vs Project Categories}
 Next, we investigate which categories achieve the highest or lowest numbers of hotfixes per version update. We proceed to analyse why certain categories might have low numbers of hotfixes and vice versa.
     
-In Table \ref{tab:1}, if we look at the average number of hotfixes per category we see that the Internet, Security, Communications, and Systems Administration have the lowest average number of hot fixes per update out of the entire group of categories. The categories with the highest average numbers of hotfixes per version update are Code Generators and Role playing which have 0.53 and 0.47 average hot fixes per update respectively. Both these values are much higher than the next highest (0.34).
+In Table \ref{tab:1}, if we look at the average number of hotfixes per category we see that \textbf{the Internet, Security, Communications, and Systems Administration have the lowest average number of hot fixes per update} out of the entire group of categories. The categories with \textbf{the highest average numbers of hotfixes per version update are Code Generators and Role playing} which have 0.53 and 0.47 average hot fixes per update respectively. Both these values are much higher than the next highest (0.34).
 
 With regards to those with lower average hot fixes per update, there is a reasonable explanation. Applications under the categories as Security, Internet, Communications and Systems administration are all information critical, which means they have critical assets that need to be protected in order to maintain customer's privacy and trust. For example, with Communications applications it is vital that security is implemented in such a way that an adversary cannot intercept or obtain messages only intended for the receiver. This means that applications that fall under such categories should be extensively tested before deployment to reduce the chance of failure. This results in less hot fix being needed after deployment.
 
@@ -256,22 +259,23 @@ Role Playing applications have a high average number of hot fixes compared to ot
 On the other hand, for Code generators, C and C++, have very high hot fix averages while  PHP and Java are the lowest. One can speculate that PHP and Java are established languages for writing code generators and due to this engender low hot fix averages. C and C++ might share syntactic details and semantic structure that would result in a similar hot fix average between them.
 
 \subsection{RQ3: Hotfixes vs Languages}
-Language comparison based on the average hotfix ratio over all the categories in Table 1 has shown that Java has appeared to have the least number of hotfixes per version update (0.176) followed by Javascript (0.209) and Perl (0.218). However, all the mentioned languages show marginally better results with 8\% difference comparing to other common languages taken under analysis: PHP(0.282), C++(0.286), C (0.305) and C\#(0.339). C\# has the highest average ratio of hotfixes among all the languages.
+Language comparison based on the average hotfix ratio over all the categories in Table 1 has shown that \textbf{Java has appeared to have the least average ratio of hotfixes per version update (0.176)} followed by JavaScript (0.209) and Perl (0.218). However, all the mentioned languages show marginally better results with 8\% difference comparing to other common languages taken under analysis: PHP(0.282), C++(0.286), C (0.305) and C\#(0.339). \textbf{C\# has the highest average ratio of hotfixes among all the languages.}
 
 \subsection{RQ4: Hotfixes vs Language Types}
-The interesting research question is comparing the type of each programming language by their average ratio of hotfixes. The classification in Table \ref{tab:1} is inspired by \cite{Ray2014}, where languages were compared based on the number of bug fixes in each language and were divided into three main Classes. The first class (Programming Paradigm) has the following categories: Procedural, Functional, Scripting. The second class is Compilation containing Static and Dynamic type. The final one, Type Class, separates languages into Strongly-typed and weakly-typed.
+The interesting research question is comparing the type of each programming language by their average ratio of hotfixes. The classification in Table \ref{tab:1} is inspired by \cite{Ray2014}, where languages were compared based on the number of bug fixes in each language and were divided into three main Classes. The first class (Programming Paradigm) has the following categories: Procedural, Functional, Scripting. The second class is Compilation containing Static and Dynamic type. The final one, Type Class, separates languages into Strongly-typed and Weakly-typed. According to \cite{Ray2014}, strongly-typed languages experienced fewer bug fixes than its counterpart, weakly-typed. Static programming languages required fewer corrective commits than dynamic ones. And finally, functional languages encountered fewer bug fixes than procedural ones.
 
-According to the results that were achieved in the study [14], strongly-typed languages experienced fewer bug fixes than weakly-typed. Static programming languages required fewer corrective commits than dynamic ones. And finally, functional languages encountered fewer bug fixes than procedural ones.
+Due to our criteria of selecting the languages, the chosen 8 languages are all either procedural or scripting, but not functional. Most probably this was due to the fact that functional languages are limited to specific use cases and as such are not widely popular across different domains. \FIXME{citation here?} Consequently, we compare only Procedural and Scripting languages.
 
-Due to the fact that we selected to evaluate languages that appeared in at least 50% of the selected categories, we discovered only 6 languages and none of them was functional. Most probably this was due to the fact that functional languages are limited to specific use cases and as such are not widely popular across different domains. Consequently, we evaluated the relationship between Procedural and Scripting languages instead of Procedural against Functional.
+\subsubsection*{Programming Paradigm: Procedural vs Scripting}
+From Table \ref{tab:1}, there is no clear trend or pattern of the hotfix ratio among Procedural (Java, C, C\#, C++) and Scripting (Perl, Python, PHP) across all the categories. This is possibly because the number of data points (languages) was too low to observe such behaviours and make any firm conclusions. %It was always the case that at least one of the languages would not follow a pattern. For some categories, the comparison would consider only one language from a certain category.
 
-Analysing the first language relationship - Procedural (Java, C, C\#, C++) vs Scripting (Perl, Python, PHP), we were not able to detect any patterns across the categories. The reason was that the number of languages was too low to make any firm conclusions. It was always the case that at least one of the languages would not follow a pattern or the comparison would consider only one language from a certain category.
+\subsubsection*{Compilation: Static vs Dynamic}
+In this class, Static (Java, C, C\#, C++) and Dynamic (Perl, Python, PHP) languages led to the same conclusions of no clear different of hotfix ratio observed between the two sets as can be seen from Table \ref{tab:1}. The reason was because the languages in these two categories coincided with the languages in the first two classes (Procedural and Scripting).
 
-Evaluating the second relationship between Static (Java, C, C\#, C++) and Dynamic (Perl, Python, PHP) languages led to the same conclusions. The reason was because the languages in these two categories coincided with the languages in the first two classes (Procedural and Scripting).
+\subsubsection*{Type: Strongly-type vs Weakly-typed}
+The third class compares strongly-typed (Java, C\#, Perl, Python) and weakly-typed (C, C++, PHP) languages. Similarly to the previous two classes, we encountered no clear pattern across the categories. Furthermore, we found the same problem of having comparisons against only one member of a language class. Solely in the Communications category, we were able to detect some pattern, where strongly-typed languages performed slightly better. However, there were only two languages labelled as weak. Therefore, we cannot reach any satisfying conclusions based on this finding.
 
-The third aspect that we investigated referred to comparing strongly-typed (Java, C\#, Perl, Python) and weakly-typed (C, C++, PHP) languages. Similarly to the first language relationship, we encountered that there was no clear pattern across the categories. Furthemore, we found the same problem of having comparisons against against only one member of a language class. Solely in the Communications category, we were able to detect some pattern, where weakly typed languages performed better. However, there were only two languages labelled as weak. Therefore, we cannot reach any satisfying conclusions based on this finding.
-
-Overall, we could not identify any convincing patterns based on the class comparison between languages mostly due to the low number of extracted programming languages.
+Overall, \textbf{we could not identify any convincing patterns based on the class comparison between languages} mostly due to the low number of selected programming languages.
 
 \subsection{Limitations}
 There were several limitations that we encountered throughout our study. First, we were able to analyse only a small part of all available projects because most of the developers did not support a versioning system, i.e. no bump commits could be identified.
@@ -286,152 +290,15 @@ There is a low amount of languages satisfied our predicate (being present in at 
 Lastly, only one dataset was used to evaluate our hypothesis: SourceForge 2013. Hence, this results may not be generalised.
 
 \section{Conclusions and Future Work}
-We have presented a study in detecting the fault-proneness of programming languages through hotfix commits - a topic that has not been investigated so far. As part of our research we performed a topic-specific analysis across 16 programming domains to detect the most popular languages used in the evaluated  projects. We investigated languages and topics that achieved highest/lowest ratios of hotfix per version update and tried to identify patterns based on the language classification. The tool that we created was written in Boa and mined repositories from SourceForge 2013's dataset. Our goal was to verify whether the general relationships between languages' reliability holds with regard to hotfixes.  
-Our results identified 6 languages as being the most widely used across different domains - C\#, Perl, Python, C, C++ and PHP. We discovered that Java achieves the least number of hotfixes per version update (0.18), while C\# requiring most amount of hotfixes per version increase (0.34). From the different domains, we recognized: Security, Internet and Communications as being the most reliable (i.e. requiring least amount of hotfixes per version update) while Role Playing and Code Generation required highest number of corrections. Regarding the comparison between language classes, we were not able to identify any conclusive patterns.\par
-There are few aspects that could be improved as Future Work. In particular, more datasets could be used, including Github (provided that projects are categorised into topics). Further improvements may be done to identify bump commits more accurately. Recently, a few commercial projects have been open-sourced and as a result, we could use them to enhance the quality of our data. In such projects, releases will have occurred more frequently and thus, there is a higher probability of identifying more hotfixes.\par
-Finally, we believe that our paper provides a good foundation for future research to be done in this topic. We expect that the results we obtained will help developers and project managers improve their planning and understand what the most appropriate languages are for their specific topic.
+We have presented a study in detecting the fault-proneness of programming languages through hotfix commits, a topic that has not been investigated so far. As part of our research we performed a topic-specific analysis across 16 programming domains (categories) to detect the most popular languages used in the evaluated  projects. We investigated languages and topics that achieved highest/lowest ratios of hotfix per version update and tried to identify patterns based on the language classification presented in \cite{Ray2014}. We used Boa to mine repositories in the SourceForge 2013's dataset. %Our goal was to verify whether the general relationships between languages' reliability holds with regard to hotfixes.  
+We identified 8 languages as being the most widely used across different domains including Java, C, C++, Perl, Python, PHP, C\#, and JavaScript respectively. We discovered that Java achieves the least number of hotfixes per version update (0.176), while C\# requiring the highest amount of hotfixes per version increase (0.339). From the different categories, we observed that Security, Internet and Communications is the most reliable (i.e. requiring least amount of hotfixes per version update) while Role Playing and Code Generation required the highest number of corrections by hotfixes. Finally, according to the language classes, we were not able to identify any conclusive patterns.
+
+We believe that there are still aspects to be improved in our study. In particular, more datasets could be used, including Github (provided that projects are categorised into topics), and more reliable and accurate method to identify bump commits. Instead of using data from SourceForge, real commercial projects which have been open-sourced can be investigated to enhance the quality of our data. In such projects, releases should occur more frequently and thus, there is a higher probability of identifying more hotfixes.
+
+Finally, we hope that our paper lays a good foundation for future research to be done in this area. We expect that the results we obtained will help developers and project managers improve their planning and understand what are the most appropriate languages for their specific topic or purpose.
 
 \bibliographystyle{abbrv}
 \bibliography{hotfixes} 
-
-% An example of a floating table. Note that, for IEEE style tables, the 
-% \caption command should come BEFORE the table. Table text will default to
-% \footnotesize as IEEE normally uses this smaller font for tables.
-% The \label must come after \caption as always.
-%
-%\begin{table}[!t]
-%% increase table row spacing, adjust to taste
-%\renewcommand{\arraystretch}{1.3}
-% if using array.sty, it might be a good idea to tweak the value of
-% \extrarowheight as needed to properly center the text within the cells
-%\caption{An Example of a Table}
-%\label{table_example}
-%\centering
-%% Some packages, such as MDW tools, offer better commands for making tables
-%% than the plain LaTeX2e tabular which is used here.
-%\begin{tabular}{|c||c|}
-%\hline
-%One & Two\\
-%\hline
-%Three & Four\\
-%\hline
-%\end{tabular}
-%\end{table}
-
-
-
-
-% if have a single appendix:
-%\appendix[Proof of the Zonklar Equations]
-% or
-%\appendix  % for no appendix heading
-% do not use \section anymore after \appendix, only \section*
-% is possibly needed
-
-% use appendices with more than one appendix
-% then use \section to start each appendix
-% you must declare a \section before using any
-% \subsection or using \label (\appendices by itself
-% starts a section numbered zero.)
-%
-
-
-
-% Can use something like this to put references on a page
-% by themselves when using endfloat and the captionsoff option.
-%\ifCLASSOPTIONcaptionsoff
-%  \newpage
-%\fi
-
-
-
-% trigger a \newpage just before the given reference
-% number - used to balance the columns on the last page
-% adjust value as needed - may need to be readjusted if
-% the document is modified later
-%\IEEEtriggeratref{8}
-% The "triggered" command can be changed if desired:
-%\IEEEtriggercmd{\enlargethispage{-5in}}
-
-% references section
-
-% can use a bibliography generated by BibTeX as a .bbl file
-% BibTeX documentation can be easily obtained at:
-% http://www.ctan.org/tex-archive/biblio/bibtex/contrib/doc/
-% The IEEEtran BibTeX style support page is at:
-% http://www.michaelshell.org/tex/ieeetran/bibtex/
-%\bibliographystyle{IEEEtran}
-% argument is your BibTeX string definitions and bibliography database(s)
-%\bibliography{IEEEabrv,../bib/paper}
-%
-% <OR> manually copy in the resultant .bbl file
-% set second argument of \begin to the number of references
-% (used to reserve space for the reference number labels box)
-%\begin{thebibliography}{1}
-
-%\bibitem{}
-%Hattori, L.P.; Lanza, M., \emph{"On the nature of commits"} in Automated Software Engineering - Workshops, 2008. ASE Workshops 2008. 23rd IEEE/ACM International Conference on , vol., no., pp.63-71, 15-16 Sept. 2008
-%\bibitem{}
-%Livshits,B.; Zimmerman,T.; \emph{"DynaMine: Finding Common Error Patterns by Mining Software Revision Histories"} in Proceedings of the 10th European software engineering conference held jointly with 13th ACM SIGSOFT international symposium on Foundations of software engineering, pp.296-305
-%\bibitem{}
-%Mockus, A.; Votta, L.G., \emph{"Identifying reasons for software changes using historic databases"} in Software Maintenance, 2000. Proceedings. International Conference on , vol., no., pp.120-130, 2000
-%\bibitem{}
-%Ratzinger,J.; Sigmund,T.; Gall,H.; \emph{"On the Relation of Refactoring and Software Defects"} in MSR '08, Proceedings of the 2008 international working conference on Mining software repositories, pp. 35-38
-%\bibitem{}
-%Hindle,A.; German,D.; Holt,R.; \emph{"What do large commits tell us?: a taxonomical study of large commits"} in MSR '08, Proceedings of the 2008 international working conference on Mining software repositories, pp.99-108
-%\bibitem{}
-%Oliva,G.; Steinmacher,I.; Wiese,I.; Aurelio,M.; \emph{"What Can Commit Metadata Tell Us About Design Degradation?"} in IWPSE 2013, Proceedings of the 2013 International Workshop on Principles of Software Evolution, pp.18-27
-%\bibitem{}
-%Phillips,S.; Sillito,J.; Walker,R.; \emph{"Branching and merging: an investigation into current version control practices"} in CHASE '11 Proceedings of the 4th International Workshop on Cooperative and Human Aspects of Software Engineering, pp.9-15
-%\bibitem{}
-%Agrawal, K.; Amreen, S.; Mockus, A., \emph{"Commit Quality in Five High Performance Computing Projects"} in Software Engineering for High Performance Computing in Science (SE4HPCS), 2015 IEEE/ACM 1st International Workshop on , vol., no., pp.24-29, 18-18 May 2015
-%\bibitem{}
-%Steff, M.; Russo, B., \emph{"Co-evolution of logical couplings and commits for defect estimation"} in Mining Software Repositories (MSR), 2012 9th IEEE Working Conference on , vol., no., pp.213-216, 2-3 June 2012
-%\bibitem{}
-%Williams,C.; Spacco,J.; \emph{"Branching and Merging in the Repository"} in MSR '08, Proceedings of the 2008 international working conference on Mining software repositories, pp.19-22
-%\bibitem{}
-%Kolassa,C.; Riehle,D.; Salim,M.; \emph{"The Empirical Commit Frequency Distribution of Open Source Projects"} in WikiSym '13, Proceedings of the 9th International Symposium on Open Collaboration, Article No.18
-%\bibitem{}
-%Ray,B.; Posnett,D.; Filkov,V.; Devanbu,P;  \emph{A Large Scale Study of Programming Languages and Code Quality"} in Github;  FSE 2014, Proceedings of the 22nd ACM SIGSOFT International Symposium on Foundations of Software Engineering, pp.155-165
-%\bibitem{}
-%Phipps,G; \emph{"Comparing Observed Bug and Productivity Rates for Java and C++" } in Software—Practice \& Experience; vol.29, issue 4, pp.345-358, April 10, 1999 
-%\bibitem{}
-%Prechelt, L., \emph{"An empirical comparison of seven programming languages"} in Computer , vol.33, no.10, pp.23-29, Oct 2000
-%\bibitem{}
-%Fourment,M.; Gillings,M.; \emph{"A comparison of common programming languages used in bioinformatics"} in BMC Bioinformatics Feb 2008
-%\bibitem{}
-%Furia,C.; Nanz,S.; \emph{"A Comparative Study of Programming Languages in Rosetta Code"} in ICSE '15, Proceedings of the 37th International Conference on Software Engineering, vol.1, pp.778-788
-%\bibitem{}
-%Iowa State University of Science and Technology,  \emph{"Boa - Mining Ultra-Large-Scale Software Repositories"}, http://boa.cs.iastate.edu/
-
-
-%\end{thebibliography}
-
-% biography section
-% 
-% If you have an EPS/PDF photo (graphicx package needed) extra braces are
-% needed around the contents of the optional argument to biography to prevent
-% the LaTeX parser from getting confused when it sees the complicated
-% \includegraphics command within an optional argument. (You could create
-% your own custom macro containing the \includegraphics command to make things
-% simpler here.)
-%\begin{biography}[{\includegraphics[width=1in,height=1.25in,clip,keepaspectratio]{mshell}}]{Michael Shell}
-% or if you just want to reserve a space for a photo:
-
-% You can push biographies down or up by placing
-% a \vfill before or after them. The appropriate
-% use of \vfill depends on what kind of text is
-% on the last page and whether or not the columns
-% are being equalized.
-
-%\vfill
-
-% Can be used to pull up biographies so that the bottom of the last one
-% is flush with the other column.
-%\enlargethispage{-5in}
-
-
-
 
 % that's all folks
 \end{document}
