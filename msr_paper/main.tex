@@ -112,7 +112,7 @@ Williams and Spacco~\cite{Williams2008} investigated the duration between the mo
 Our work was inspired by the previous research paper \cite{Ray2014}, where authors compared the number of bug commits to the total number of commits across 17 languages and 850 different projects. Our contribution primarily involved investigation of the fault-proneness of different languages based on the newly defined criteria - hotfixes per version update. 
 
 \subsection{Dataset}
-The SourceForge13 Dataset is selected for this study. It consists of \FIXME{[totalnumberofprojects]} projects, selected from the top 16 most popular project types in the SourceForge dataset. That enables us to differentiate results for the different kinds of projects.
+The SourceForge13 Dataset is selected for this study. It consists of \textbf{49865} projects, selected from the top 16 most popular project types in the SourceForge dataset. That enables us to differentiate results for the different kinds of projects.
 
 \subsection{Research Questions}
 \noindent Our study aimed to answer the following research questions:
@@ -164,7 +164,7 @@ We performed an empirical study on the SourceForge13 dataset aiming to find the 
 \subsection{RQ1: Language Popularity}
 Our investigation on the most widely used languages across the top 16 most popular categories revealed that there are surprisingly few such languages. We identified only 8 widely used languages: Java, C, C++, Perl, Python, PHP, C\#, and JavaScript. The criteria of choosing the languages is based on whether the language presents in most of the categories. We found that there is a significant drop in the amount of occurrence after JavaScript.  %One would expect JavaScript to appear in the list. However, it is present only in 7 categories and hence is ignored from the list. This may be due to the fact that JavaScript is mainly used only for website development while our 16 popular categories span over various aspects of software. 
 
-From Table \ref{tab:1}, \textbf{the most widely used languages from the list is Java which appears in all the 16 categories.} C, and C++ share the second place with occurrence in 15 out of 16 categories. While C++ is not present in Site Management, C is not present in Frameworks. The rest of the languages in the list are present in 10 categories on average. However, it is interesting to note that the majority of these languages are not used in Testing, which contains only Java, C, and C++. Similarity, only a few languages appears in Code Generators and Site Management categories. The observations made are reasonable since using these languages in such categories is very uncommon. \FIXME{Citation here?}
+From Table \ref{tab:1}, \textbf{the most widely used languages from the list is Java which appears in all the 16 categories.} C, and C++ share the second place with occurrence in 15 out of 16 categories. While C++ is not present in Site Management, C is not present in Frameworks. The rest of the languages in the list are present in 10 categories on average. However, it is interesting to note that the majority of these languages are not used in Testing, which contains only Java, C, and C++. Similarity, only a few languages appears in Code Generators and Site Management categories.
 
 \subsection{RQ2: Hotfixes vs Project Categories}
 Next, we investigate which categories achieve the highest or lowest numbers of hotfixes per version update. We proceed to analyse why certain categories might have low numbers of hotfixes and vice versa.
@@ -185,7 +185,7 @@ Language comparison based on the average hotfix ratio over all the categories in
 \subsection{RQ4: Hotfixes vs Language Types}
 The interesting research question is comparing the type of each programming language by their average ratio of hotfixes. The classification in Table \ref{tab:1} is inspired by \cite{Ray2014}, where languages were compared based on the number of bug fixes in each language and were divided into three main Classes. The first class (Programming Paradigm) has the following categories: Procedural, Functional, Scripting. The second class is Compilation containing Static and Dynamic type. The final one, Type Class, separates languages into Strongly-typed and Weakly-typed. According to \cite{Ray2014}, strongly-typed languages experienced fewer bug fixes than its counterpart, weakly-typed. Static programming languages required fewer corrective commits than dynamic ones. And finally, functional languages encountered fewer bug fixes than procedural ones.
 
-Due to our criteria of selecting the languages, the chosen 8 languages are all either procedural or scripting, but not functional. Most probably this was due to the fact that functional languages are limited to specific use cases and as such are not widely popular across different domains. \FIXME{citation here?} Consequently, we compare only Procedural and Scripting languages.
+Due to our criteria of selecting the languages, the chosen 8 languages are all either procedural or scripting, but not functional. Most probably this was due to the fact that functional languages are limited to specific use cases and as such are not widely popular across different domains  \cite{Wadler1999}. Consequently, we compare only Procedural and Scripting languages.
 
 \subsubsection*{Programming Paradigm: Procedural vs Scripting}
 From Table \ref{tab:1}, there is no clear trend or pattern of the hotfix ratio among Procedural (Java, C, C\#, C++) and Scripting (Perl, Python, PHP) across all the categories. This is possibly because the number of data points (languages) was too low to observe such behaviours and make any firm conclusions. %It was always the case that at least one of the languages would not follow a pattern. For some categories, the comparison would consider only one language from a certain category.
@@ -223,5 +223,3 @@ Finally, we hope that our paper lays a good foundation for future research to be
 
 % that's all folks
 \end{document}
-
-
