@@ -109,13 +109,13 @@ Williams and Spacco~\cite{Williams2008} investigated the duration between the mo
 % }
 % \end{table}
 
-Our work was inspired by a research paper \cite{Ray2014}, where authors compared the number of bug commits to the total number of commits across 17 languages and 850 different projects. Our contribution primarily involved investigation of the fault-proneness of different languages based on the newly defined criteria - hotfixes per version update. 
+Our work was inspired by a previous research paper~\cite{Ray2014} which compared the number of bug fix commits to the total number of commits across 17 languages and 850 different projects. Our primary contribution is the investigation of the fault-proneness of different languages accross project domains based on the newly defined criteria \emph{hotfixes per version update}. 
 
 \subsection{Dataset}
-The Boa September 2013 SourceFourge dataset is selected for this study. It consists of 49,865 projects, selected from the top 16 most popular project categories in the dataset. We only concentrate on projects that incorporate versioning (i.e. containing bump commits). %That enables us to differentiate results of each different project category.
+We selected the Boa September 2013 SourceFourge dataset for this study as it containts project topics. From the dataset, we selected projects from the top 16 most popular project topics. This resulted in of 49,865 projects. Moreover, we only concentrate on projects that incorporate versioning (i.e.\ containing bump commits).
 
 \subsection{Approach for identifying hotfix commits}
-We invented a method to distinguish a hotfix based on commit messages. The method has 2 parts:
+Our method to distinguish hotfixes based on commit messages has 2 parts:
 
 \textbf{1) Detecting version bump commits:} From the observed data, it turned out to be straightforward to extract this information by a regular expression that matches the following strings: ``bump'', ``version'', ``update'' in an appropriate order.
 
@@ -130,16 +130,16 @@ We invented a method to distinguish a hotfix based on commit messages. The metho
 
 \noindent\textbf{RQ1 (language popularity):} What languages are the most widely used across the top 16 most popular categories?
 
-\noindent\textbf{RQ2 (hotfixes vs. project categories):} What project categories achieve the highest/lowest number of hotfixes per version update?
+\noindent\textbf{RQ2 (hotfixes vs.\ project categories):} What project categories achieve the highest/lowest number of hotfixes per version update?
 
-\noindent\textbf{RQ3 (hotfixes vs. languages):} What languages achieve the highest/lowest number of hotfixes per version update?
+\noindent\textbf{RQ3 (hotfixes vs.\ languages):} What languages achieve the highest/lowest number of hotfixes per version update?
 
-\noindent\textbf{RQ4 (hotfixes vs. language types):} Are there any relationships between the occurrences of hotfixes and the type of the programming language?
+\noindent\textbf{RQ4 (hotfixes vs.\ language types):} Are there any relationships between the occurrences of hotfixes and the type of the programming language?
 
 \begin{table*}[!htbp]
 	\centering
 	\small
-	\begin{tabular}{l c c c r r r r r r r r r r r r r r r r r}
+	\begin{tabular}{@{}l c@{~~}c@{~~}c r r r r r r r r r r r r r r r r r@{}}
 		Language & $\mathcal{P}$ & $\mathcal{C}$ & $\mathcal{T}$ & 
 		\rotatebox{90}{Databases} & \rotatebox{90}{Systems Administration} & 
 		\rotatebox{90}{Dynamic Content} & 
@@ -170,7 +170,7 @@ We invented a method to distinguish a hotfix based on commit messages. The metho
 	\label{tab:1}
 \end{table*}
 
-\section{Results}
+%\section{Results}
 We performed an empirical study on the SourceForge dataset using our method of identifying version bump commits and hotfix commits. The findings are explained below.
 \subsection{RQ1: language popularity}
 Our investigation on the most widely used languages across the top 16 most popular categories revealed that there are surprisingly few such languages. We chose the languages based on their frequency of occurrence across 16 categories. From Table \ref{tab:1}, the 8 widely used languages include Java (16), C (15), C++ (15), Perl (11), Python (11), PHP (11), C\# (10), and JavaScript (7) respectively.  We found a significant drop in occurrence for the rest of languages so their results are not included here.  %One would expect JavaScript to appear in the list. However, it is present only in 7 categories and hence is ignored from the list. This may be due to the fact that JavaScript is mainly used only for website development while our 16 popular categories span over various aspects of software. 
@@ -179,7 +179,7 @@ It is interesting that the majority of these languages are not used in Testing, 
 
 % From Table \ref{tab:1}, \textbf{the most widely used languages from the list is Java which appears in all the 16 categories.} C, and C++ share the second place with occurrence in 15 out of 16 categories. While C++ is not present in Site Management, C is not present in Frameworks. The rest of the languages in the list are present in 10 categories on average. However, it is interesting to note that the majority of these languages are not used in Testing, which contains only Java, C, and C++. Similarity, only a few languages appears in Code Generators and Site Management categories.
 
-\subsection{RQ2: hotfixes vs. project categories}
+\subsection{RQ2: hotfixes vs.\ project categories}
 To be able to compare among languages, we calculated their hotfix ratios. The hotfix ratio of a language $P$ in category $C$ is a ratio of total hotfix commits per total version bump commits of the language in that category. %We proceed to analyse why certain categories might have low numbers of hotfixes and vice versa.
 \begin{equation*}
 \mathrm{HotfixRatio}_{P,C} = \frac{\sum{\mathrm{HotfixCommit}_{P,C}}}{\sum{\mathrm{VersionBumpCommit}_{P,C}}}
@@ -196,21 +196,21 @@ The second least reliable category is Role playing (0.47) which has higher hotfi
 
 %On the other hand, for Code generators, C and C++, have very high hot fix averages while  PHP and Java are the lowest. One can speculate that PHP and Java are established languages for writing code generators and due to this engender low hot fix averages. C and C++ might share syntactic details and semantic structure that would result in a similar hot fix average between them.
 
-\subsection{RQ3: hotfixes vs. languages}
+\subsection{RQ3: hotfixes vs.\ languages}
 Language comparison based on the average hotfix ratio over all the categories in Table 1 has shown that \textbf{Java has the lowest average hotfix ratio (0.176)} followed by JavaScript (0.209) and Perl (0.218). However, all the mentioned languages show marginally better results with an approximately 8\%-difference compared to other common languages: PHP (0.282), C++ (0.286), C (0.305) and C\#(0.339). \textbf{C\# has the highest average hotfix ratio among all the languages.}
 
-\subsection{RQ4: hotfixes vs. language types}
+\subsection{RQ4: hotfixes vs.\ language types}
 Another interesting research question is comparing the type of programming languages by their average hotfix ratios. The classification in Table \ref{tab:1} is inspired by \cite{Ray2014}, where languages were compared using hotfix ratios with respect to their three main classes. Programming Paradigm class (noted as $\mathcal{P}$ in Table \ref{tab:1}) has three variations: procedural, functional, and scripting. The Compilation class contains static and dynamic type. The final one, Type class, separates languages into strongly-typed and weakly-typed. According to \cite{Ray2014}, strongly-typed languages experienced fewer bug fixes than its counterpart, weakly-typed. Static programming languages required fewer corrective commits than dynamic ones. And finally, functional languages encountered fewer bug fixes than procedural ones.
 
 Due to our criteria of selecting the languages, the chosen 8 languages are all either procedural or scripting, but not functional. Most probably this was due to the fact that functional languages are limited to specific use cases and as such are not widely popular across different domains  \cite{Wadler1999}. Consequently, we only compared procedural and scripting languages in this class.
 
-\subsubsection*{Programming paradigm: procedural vs. scripting}
+\subsubsection*{Programming paradigm: procedural vs.\ scripting}
 From Table \ref{tab:1}, there is no clear trend or pattern of the hotfix ratio among procedural (Java, C, C\#, C++) and scripting (Perl, Python, PHP) languages across all the categories. This is possibly because the number of data points (languages) were too low to observe such behaviours and draw any firm conclusions. %It was always the case that at least one of the languages would not follow a pattern. For some categories, the comparison would consider only one language from a certain category.
 
-\subsubsection*{Compilation: static vs. dynamic}
+\subsubsection*{Compilation: static vs.\ dynamic}
 In this class, static (Java, C, C\#, C++) and dynamic (Perl, Python, PHP) languages led to the same conclusions of no clear difference of observed hotfix ratios between the two sets as can be seen from Table \ref{tab:1}. The reason was because the languages in these two categories coincided with the languages in the first two classes (procedural and scripting).
 
-\subsubsection*{Type: strongly-type vs. weakly-typed}
+\subsubsection*{Type: strongly-type vs.\ weakly-typed}
 The third class compares strongly-typed (Java, C\#, Perl, Python) and weakly-typed (C, C++, PHP) languages. Similarly to the previous two classes, we encountered no clear pattern across the categories. Furthermore, we found problems of having comparisons against only one member of a language class. Solely in the Communications category, we were able to detect some pattern, where weakly-typed languages performed slightly better. However, there were only two languages labelled as weak. Therefore, we cannot reach any satisfying conclusions based on this finding.
 
 Overall, \textbf{we could not identify any convincing patterns based on the class comparison between languages} mostly due to the low number of selected programming languages.
